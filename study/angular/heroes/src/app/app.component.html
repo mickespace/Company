@@ -1,15 +1,20 @@
 <h1>{{hero.id}}</h1>
-<h2>{{hero.name}} details!</h2>
-<input [(ngModel)]="hero.name" type="text" />
+<h2>{{hero.Name}} details!</h2>
+<input [(ngModel)]="hero.Name" type="text" />
+
+<ul class="heroes">
+  <li *ngFor="let a of heroes" [class.selected]="a ==selectedHero" (click)="onSelected(a)">
+    <span class="badge">{{a.id}}</span> {{a.Name}}
+  </li>
+</ul>
 <div style="height:200px; background-color:#ccc;">
-  <ul class="heroes">
-    <li *ngFor="let a of heroes">
-      <span class="badge">{{a.id}}</span> {{a.name}}
-    </li>
-  </ul>
 </div>
 <ul *ngIf="isbusy" class="heroes">
   <li>
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <span class="badge">{{hero.id}}</span> {{hero.Name}}
   </li>
 </ul>
+
+<hero-detail [hero]="selectedHero"></hero-detail>
+
+<div style="height:200px; background-color:#ccc;">
