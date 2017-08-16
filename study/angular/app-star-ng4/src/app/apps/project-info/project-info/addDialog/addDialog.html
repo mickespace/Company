@@ -1,0 +1,24 @@
+<button class="material-icons button-style" md-dialog-close>
+   <i class="fa fa-times" aria-hidden="true"></i>
+</button>
+<h4 md-dialog-title>添加图集</h4>
+<hr>
+<form #form="ngForm" (ngSubmit)="form.form.valid&&onAddPhoto()" method="post" name="fileinfo" novalidate role="form">
+  <div class="row">
+    <span class="col-xs-3 txt">图片：</span>
+    <p-fileUpload class="col-xs-8" mode="advanced" name="upload[]" chooseLabel="上传图片" accept="image/*" maxFileSize="1000000"
+      [showUploadButton]="false" [showCancelButton]="false" (onSelect)="onSelectImg($event)" (onRemove)="onRemoveImg($event)"></p-fileUpload>
+  </div>
+  <div class="row">
+    <span class="col-xs-3 txt">日期：</span>
+    <p-calendar class="col-xs-7" [showTime]="true" [showIcon]="true" name="date" [(ngModel)]="phTime"></p-calendar>
+  </div>
+  <div class="row">
+    <span class="col-xs-3 txt">描述：</span>
+    <textarea class="col-xs-7 description" rows="5" cols="30" pInputTextarea name="descript" [(ngModel)]="phDescription"></textarea>
+  </div>
+  <div class="row button-row confirm-button">
+    <button md-button md-raised-button type="submit" [disabled]="!form.form.valid">确定</button>
+    <button md-button md-raised-button md-dialog-close>取消</button>
+  </div>
+</form>

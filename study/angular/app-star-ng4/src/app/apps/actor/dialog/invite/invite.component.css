@@ -1,0 +1,32 @@
+.line {
+  border-bottom: 1px solid #616161;
+  margin: 0px;
+}
+
+.style-one {
+  margin: 10px 0;
+}
+
+.form-item {
+  margin-top: 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.orange {
+  color: #FF5722;
+}
+
+.tip {
+  font-size: 12px;
+  margin: 0px;
+  margin-top: 5px;
+  color: #616161;
+}
+
+.newcode {
+  font-size: 16px;
+  color: #4CAF50;
+}

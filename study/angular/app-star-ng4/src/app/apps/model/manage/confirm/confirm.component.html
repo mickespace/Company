@@ -1,0 +1,9 @@
+<h3 class="title" md-dialog-title><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>{{title}}</h3>
+<md-dialog-content>{{content}}</md-dialog-content>
+<md-dialog-actions *ngIf="isConfirm">
+  <button md-button [md-dialog-close]="true">确定</button>
+  <button md-button md-dialog-close>取消</button>
+</md-dialog-actions>
+<md-dialog-actions *ngIf="!isConfirm">
+  <button md-button md-dialog-close>关闭</button>
+</md-dialog-actions>

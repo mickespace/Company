@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="nav-left">
+    <md-list class="nav-list">
+      <md-list-item>
+        <a class="nav-a" routerLink="browse" routerLinkActive="active">
+          <md-icon>visibility</md-icon> 模型浏览</a>
+      </md-list-item>
+      <md-list-item>
+        <a class="nav-a" routerLinkActive="active">
+          <md-icon>tune</md-icon> 模型管理</a>
+      </md-list-item>
+      <md-list-item>
+        <a class="nav-a-child" routerLink="manage" routerLinkActive="active">
+          <md-icon>border_all</md-icon> 实体模型</a>
+      </md-list-item>
+      <md-list-item>
+        <a class="nav-a-child" routerLinkActive="active">
+          <md-icon>border_all</md-icon> 场地模型</a>
+      </md-list-item>
+      <md-list-item>
+        <a class="nav-a-child" routerLinkActive="active">
+          <md-icon>public</md-icon> GIS数据</a>
+      </md-list-item>
+    </md-list>
+  </div>
+  <div class="con-right">
+    <router-outlet></router-outlet>
+  </div>
+</div>

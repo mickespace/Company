@@ -1,0 +1,66 @@
+{
+  "apps": [{
+    "appName": "dashboard",
+    "appDisplay": "仪表板",
+    "appKey": "B9CD985D-EDAD-432E-A740-6A736964167E",
+    "appIcon": "developer_board"
+  }, {
+    "appName": "actor",
+    "appDisplay": "人员组织",
+    "appKey": "8EC659FB-D1D0-4DDA-BBDF-0BD8803C792F",
+    "appIcon": "people"
+  }, {
+    "appName": "building",
+    "appDisplay": "单体楼层",
+    "appKey": "B9CD985D-EDAD-432E-A740-6A736964167E",
+    "appIcon": "location_city"
+  }, {
+    "appName": "projectinfo",
+    "appDisplay": "项目概况",
+    "appKey": "5AC49682-46F5-47D0-8267-EFBA70312B34",
+    "appIcon": "dvr"
+  }, {
+    "appName": "message",
+    "appDisplay": "消息中心",
+    "appKey": "D5D0E6DE-962B-43A7-95AF-3B6E459AFCD3",
+    "appIcon": "message"
+  }, {
+    "appName": "model",
+    "appDisplay": "模型",
+    "appKey": "CA3E969F-464E-4EDF-A0F4-6156F9697625",
+    "appIcon": "public"
+  }],
+  "navapps": [{
+    "appName": "dashboard",
+    "appDisplay": "仪表板",
+    "appKey": "B9CD985D-EDAD-432E-A740-6A736964167E",
+    "appIcon": "developer_board"
+  }, {
+    "appName": "model",
+    "appDisplay": "模型",
+    "appKey": "CA3E969F-464E-4EDF-A0F4-6156F9697625",
+    "appIcon": "public"
+  }],
+  "proapps": [{
+    "appName": "projectinfo",
+    "appDisplay": "项目概况",
+    "appKey": "5AC49682-46F5-47D0-8267-EFBA70312B34",
+    "appIcon": "dvr"
+  }, {
+    "appName": "actor",
+    "appDisplay": "人员组织",
+    "appKey": "8EC659FB-D1D0-4DDA-BBDF-0BD8803C792F",
+    "appIcon": "people"
+  }, {
+    "appName": "building",
+    "appDisplay": "单体楼层",
+    "appKey": "B9CD985D-EDAD-432E-A740-6A736964167E",
+    "appIcon": "location_city"
+  }],
+  "drownapps": [{
+    "appName": "message",
+    "appDisplay": "消息中心",
+    "appKey": "D5D0E6DE-962B-43A7-95AF-3B6E459AFCD3",
+    "appIcon": "message"
+  }]
+}

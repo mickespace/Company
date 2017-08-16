@@ -1,0 +1,97 @@
+.register-container {
+  border: 2px solid #25B7FF;
+  width: 700px;
+  margin: 0 auto;
+}
+
+.register-set-container {
+  margin: 80px auto 30px auto;
+  clear: both;
+  width: 300px;
+}
+
+.register-step {
+  margin: 100px auto 0 auto;
+  font-size: 28px;
+  width: 450px;
+  color: #b9b9b9;
+  height: 30px;
+}
+
+.register-step>span {
+  float: left;
+}
+
+.step-line1,
+.step-line2 {
+  background: #b9b9b9;
+  width: 160px;
+  height: 2px;
+  margin-top: 13px;
+  margin-left: 4px;
+  margin-right: 4px;
+  float: left;
+}
+
+.glyphicon-user {
+  color: #25B7FF;
+}
+
+.lineActive {
+  background: #25B7FF;
+}
+
+.iconActive {
+  color: #25B7FF;
+}
+
+
+/*step1*/
+
+.register-group {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.register-group>p {
+  color: #b9b9b9;
+}
+
+.register-group>button {
+  width: 158px;
+}
+
+
+/*step 2*/
+
+.tip-title {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.tip-b {
+  color: black !important;
+}
+
+.tip-small {
+  font-size: 12px;
+}
+
+.tip-account {
+  color: #25B7FF !important;
+}
+
+.btn-sendCode {
+  width: 68px;
+}
+
+.btn-sure {
+  width: 100%;
+  background: #25B7FF;
+  color: white;
+}
+
+.full {
+  width: 100%;
+}

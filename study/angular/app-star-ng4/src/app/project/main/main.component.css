@@ -1,0 +1,53 @@
+.nav-left {
+  float: left;
+  margin-right: 16px;
+}
+
+.nav-list {
+  width: 236px !important;
+  background: #fff;
+  height: 800px;
+}
+
+md-list {
+  padding: 0px !important;
+}
+
+md-list-item {
+  margin: 0px -16px 4px -16px;
+}
+
+.nav-a,
+.nav-a.active,
+.nav-a:hover,
+.nav-a:focus {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.nav-a {
+  color: gray;
+}
+
+.nav-a.active,
+.nav-a:hover,
+.nav-a:focus {
+  color: white;
+  background: #25b7ff;
+  border-left: 3px solid #F4511E;
+}
+
+.mat-icon {
+  vertical-align: text-bottom;
+}
+
+
+/* 右侧内容 */
+
+.con-right {
+  display: flex;
+  flex-direction: column;
+}

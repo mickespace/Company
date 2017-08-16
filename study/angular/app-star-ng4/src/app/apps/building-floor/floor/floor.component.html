@@ -1,0 +1,21 @@
+<md-toolbar class="header-tool" color="primary">
+  <a mdTooltip="刷新" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onRefresh()">
+    <md-icon>refresh</md-icon>
+  </a>
+  <a mdTooltip="快速新建" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onAddFloors()">
+    <md-icon>add_circle_outline</md-icon>
+  </a>
+  <a mdTooltip="新建楼层" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onAddFloor()">
+    <md-icon>add</md-icon>
+  </a>
+  <a mdTooltip="删除楼层" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onDeleteFloor()">
+    <md-icon>delete</md-icon>
+  </a>
+  <a mdTooltip="修改楼层" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onUpdateFloor()">
+    <md-icon>update</md-icon>
+  </a>
+  <a mdTooltip="查看轴网" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onCheckAxis()">
+    <md-icon>check</md-icon>
+  </a>
+</md-toolbar>
+<app-floor-list [floors]="floors | async"></app-floor-list>

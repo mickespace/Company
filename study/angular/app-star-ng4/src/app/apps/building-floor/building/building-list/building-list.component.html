@@ -1,0 +1,32 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>
+        <md-checkbox (change)="onChooseAllBuildings($event.checked)">&nbsp;&nbsp;选择</md-checkbox>
+      </th>
+      <th>编码</th>
+      <th>名称</th>
+      <th>建筑面积</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let building of buildings">
+      <td class="checkboxTd">
+        <md-checkbox [(ngModel)]="building.IsSelected" (change)="onChangeBuilding($event)"></md-checkbox>
+      </td>
+      <td>
+        {{building.Code}}
+      </td>
+      <td>
+        {{building.Name}}
+      </td>
+      <td>
+        {{building.Area}}
+      </td>
+      <td>
+        {{building.Description}}
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,27 @@
+<div class="header">
+  <h2 md-dialog-title>创建项目</h2>
+  <button class="btn-close" md-icon-button [md-dialog-close]="isCreate" mdTooltip="关闭">
+    <md-icon>close</md-icon>
+  </button>
+</div>
+<p class="tip"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>请先选择项目封面，再进行下一步数据录入。</p>
+<md-dialog-content>
+  <p-fileUpload name="projectImg[]" (onSelect)="onSelectImg($event)" (onRemove)="onRemoveImg($event)" accept="image/*" maxFileSize="{{fileMaxSize}}"
+    chooseLabel="选择项目封面" [previewWidth]="100" [showUploadButton]="false" [showCancelButton]="false" invalidFileSizeMessageSummary="{0}：文件大小不符合要求，"
+    invalidFileSizeMessageDetail="文件最大为{{fileMaxSize | filesizeTran}}" invalidFileTypeMessageSummary="{0}：文件类型有误，" invalidFileTypeMessageDetail="允许的文件格式为：{0}">
+  </p-fileUpload>
+  <form *ngIf="imgFile" #form="ngForm" (ngSubmit)="form.form.valid && onCreate()" novalidate role="form">
+    <div class="form-item">
+      <md-input-container class="full-width">
+        <input mdInput placeholder="项目名称" [(ngModel)]="projectName" name="projectName" required>
+        <md-error>请输入项目名称</md-error>
+      </md-input-container>
+    </div>
+    <div class="form-item">
+      <md-input-container class="full-width">
+        <textarea mdInput placeholder="项目简介" [(ngModel)]="projectDesc" name="projectDesc"></textarea>
+      </md-input-container>
+    </div>
+    <button class="full-width" md-button type="submit" [disabled]="!form.form.valid">创建项目</button>
+  </form>
+</md-dialog-content>

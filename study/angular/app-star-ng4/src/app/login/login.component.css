@@ -1,0 +1,109 @@
+.login-container {
+  /*border: 2px solid greenyellow;*/
+  width: 450px;
+  margin: 0 auto;
+}
+
+.login-header {
+  margin-top: 100px;
+}
+
+.login-logo {
+  width: 51px;
+  height: 51px;
+  float: right;
+}
+
+.login-title {
+  font-size: 36px;
+}
+
+.login-tab {
+  margin-top: 50px;
+}
+
+.tab-a {
+  float: right;
+}
+
+.tab-b {
+  float: left;
+}
+
+.col-xs-2 {
+  text-align: center;
+  width: 40px;
+}
+
+.col-xs-5>a,
+.link-ul>li>a {
+  text-decoration-line: none;
+  cursor: pointer;
+  color: gray;
+}
+
+.col-xs-5>a:hover,
+.col-xs-5>a:focus,
+.link-ul>li>a:hover,
+.link-ul>li>a:focus {
+  color: black;
+}
+
+.tab-logo {
+  height: 20px;
+  width: 20px;
+}
+
+
+/*输入表单*/
+
+.login-group {
+  margin-left: 50px;
+  margin-right: 40px;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.login-input {
+  height: 40px;
+}
+
+.login-valid {
+  margin-top: 5px;
+  margin-left: 50px;
+}
+
+.btn-login {
+  width: 100%;
+  background: #25B7FF;
+  color: white;
+}
+
+
+/* 剩余样式*/
+
+.line-divider {
+  background-color: #ddd;
+  color: #ddd;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 380px;
+  height: 1px;
+  text-align: center;
+}
+
+.link-ul {
+  list-style: none;
+  text-align: center;
+}
+
+.link-ul>li {
+  margin-right: 40px;
+  display: inline;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 300px;
+  color: gray;
+}

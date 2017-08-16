@@ -1,0 +1,246 @@
+/*
+ * @Author: zsq 
+ * @Date: 2017-06-1 11:50:21 
+ * @Last Modified by: 
+ * @Last Modified time: 2017-07-24 16:53:24
+ * @Desc:全局样式 
+ */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~ng2-toastr/bundles/ng2-toastr.min.css';
+
+/* primeng */
+
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/primeng/resources/themes/bootstrap/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+body {
+  font-family: 微软雅黑, Microsoft YaHei, sans-serif !important;
+  background: #EEEEEE !important;
+  /*minimun width of 992px */
+  min-width: 992px;
+}
+
+
+/*add by zsq;time:2017-7-11 11:02:42*/
+
+@media (max-width: 1070px) {
+  .navbar-header {
+    float: none;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .navbar-collapse.collapse {
+    display: none!important;
+  }
+  .navbar-nav {
+    float: none!important;
+    margin: 7.5px -15px;
+  }
+  .navbar-nav>li {
+    float: none;
+  }
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navbar-text {
+    float: none;
+    margin: 15px 0;
+  }
+  /* since 3.1.0 */
+  .navbar-collapse.collapse.in {
+    display: block!important;
+  }
+  .collapsing {
+    overflow: hidden!important;
+  }
+}
+
+
+/* add by hxj */
+
+#circularG {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58px;
+  height: 58px;
+  margin: auto;
+}
+
+.span {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding-top: 21%;
+  padding-left: 60px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #01579B;
+  font-size: 2em;
+}
+
+.circularG {
+  position: absolute;
+  background-color: rgb(37, 182, 255);
+  width: 14px;
+  height: 14px;
+  border-radius: 9px;
+  -o-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  animation-name: bounce_circularG;
+  -o-animation-name: bounce_circularG;
+  -ms-animation-name: bounce_circularG;
+  -webkit-animation-name: bounce_circularG;
+  -moz-animation-name: bounce_circularG;
+  animation-duration: 0.818s;
+  -o-animation-duration: 0.818s;
+  -ms-animation-duration: 0.818s;
+  -webkit-animation-duration: 0.818s;
+  -moz-animation-duration: 0.818s;
+  animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-direction: normal;
+  -o-animation-direction: normal;
+  -ms-animation-direction: normal;
+  -webkit-animation-direction: normal;
+  -moz-animation-direction: normal;
+}
+
+#circularG_1 {
+  left: 0;
+  top: 23px;
+  animation-delay: 0.308s;
+  -o-animation-delay: 0.308s;
+  -ms-animation-delay: 0.308s;
+  -webkit-animation-delay: 0.308s;
+  -moz-animation-delay: 0.308s;
+}
+
+#circularG_2 {
+  left: 6px;
+  top: 6px;
+  animation-delay: 0.404s;
+  -o-animation-delay: 0.404s;
+  -ms-animation-delay: 0.404s;
+  -webkit-animation-delay: 0.404s;
+  -moz-animation-delay: 0.404s;
+}
+
+#circularG_3 {
+  top: 0;
+  left: 23px;
+  animation-delay: 0.51s;
+  -o-animation-delay: 0.51s;
+  -ms-animation-delay: 0.51s;
+  -webkit-animation-delay: 0.51s;
+  -moz-animation-delay: 0.51s;
+}
+
+#circularG_4 {
+  right: 6px;
+  top: 6px;
+  animation-delay: 0.616s;
+  -o-animation-delay: 0.616s;
+  -ms-animation-delay: 0.616s;
+  -webkit-animation-delay: 0.616s;
+  -moz-animation-delay: 0.616s;
+}
+
+#circularG_5 {
+  right: 0;
+  top: 23px;
+  animation-delay: 0.712s;
+  -o-animation-delay: 0.712s;
+  -ms-animation-delay: 0.712s;
+  -webkit-animation-delay: 0.712s;
+  -moz-animation-delay: 0.712s;
+}
+
+#circularG_6 {
+  right: 6px;
+  bottom: 6px;
+  animation-delay: 0.818s;
+  -o-animation-delay: 0.818s;
+  -ms-animation-delay: 0.818s;
+  -webkit-animation-delay: 0.818s;
+  -moz-animation-delay: 0.818s;
+}
+
+#circularG_7 {
+  left: 23px;
+  bottom: 0;
+  animation-delay: 0.914s;
+  -o-animation-delay: 0.914s;
+  -ms-animation-delay: 0.914s;
+  -webkit-animation-delay: 0.914s;
+  -moz-animation-delay: 0.914s;
+}
+
+#circularG_8 {
+  left: 6px;
+  bottom: 6px;
+  animation-delay: 1.02s;
+  -o-animation-delay: 1.02s;
+  -ms-animation-delay: 1.02s;
+  -webkit-animation-delay: 1.02s;
+  -moz-animation-delay: 1.02s;
+}
+
+@keyframes bounce_circularG {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(.3);
+  }
+}
+
+@-o-keyframes bounce_circularG {
+  0% {
+    -o-transform: scale(1);
+  }
+  100% {
+    -o-transform: scale(.3);
+  }
+}
+
+@-ms-keyframes bounce_circularG {
+  0% {
+    -ms-transform: scale(1);
+  }
+  100% {
+    -ms-transform: scale(.3);
+  }
+}
+
+@-webkit-keyframes bounce_circularG {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(.3);
+  }
+}
+
+@-moz-keyframes bounce_circularG {
+  0% {
+    -moz-transform: scale(1);
+  }
+  100% {
+    -moz-transform: scale(.3);
+  }
+}

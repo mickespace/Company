@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <p class="col-xs-2">编码：</p>
+    <md-input-container class="col-xs-10">
+      <input mdInput [(ngModel)]="code">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-2">名称：</p>
+    <md-input-container class="col-xs-10">
+      <input mdInput [(ngModel)]="name">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-2">面积：</p>
+    <md-input-container class="col-xs-10">
+      <input mdInput [(ngModel)]="area">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-2">备注：</p>
+    <md-input-container class="col-xs-10">
+      <input mdInput [(ngModel)]="description">
+    </md-input-container>
+  </div>
+  <button md-raised-button md-dialog-close>取消</button>
+  <button md-raised-button [md-dialog-close]="true" (click)="addBuilding()">确定</button>
+</div>

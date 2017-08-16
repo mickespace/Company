@@ -1,0 +1,129 @@
+<div class="content">
+  <div class="content-left">
+    <div class="row">
+      <div class="col-xs-12">
+        <h4 class="left-button">工程概况 - <strong>{{curProject.Name}}</strong></h4>
+        <hr>
+      </div>
+    </div>
+    <form #form="ngForm" (ngSubmit)="form.form.valid&&onSave()" enctype="multipart/form-data" method="post" name="fileinfo" novalidate
+      role="form">
+      <div class="row left-button">
+        <button pButton class="ui-button-info" type="button" (click)="showDialog()" label="新建属性"></button>
+        <button pButton class="ui-button-info" type="button" (click)="editProperty()" *ngIf="isDisabled" label="编辑"></button>
+        <span *ngIf="!isDisabled">
+          <button pButton class="ui-button-info" type="submit" label="保存" [disabled]="!form.form.valid"></button>
+          <button pButton class="ui-button-info" (click)="onCancle()" label="取消"></button>
+        </span>
+      </div>
+      <!--列表渲染开始  -->
+      <div class="info-row input-txt" *ngFor="let item of projectItems">
+        <input class="col-xs-4 input-txt-style" style="width: 80px;margin-left: 15px;" pInputText type="text" name="{{item._id}}"
+          [(ngModel)]="item.Name" [disabled]="isDisabled">
+        <span class="col-xs-1" style="width: 3.333333%;padding-left: 5px;padding-right: 5px;line-height:30px;">:</span>
+        <input class="col-xs-6" pInputText type="text" name="{{item._id}}_0" [(ngModel)]="item.Value" [disabled]="isDisabled">
+        <button md-icon-button class="del-button" *ngIf="!isDisabled" (click)="deletePropertySub(item)"><i class="fa fa-close fa-2x" aria-hidden="true" aria-label="删除"></i></button>
+      </div>
+      <!--列表渲染结束  -->
+      <!--新建弹窗开始  -->
+      <p-dialog header="添加工程属性" [(visible)]="isShowDialog" modal="modal" width="400" [responsive]="true">
+        <input class="col-xs-5" pInputText type="text" name="Name" placeholder="工程属性名" [(ngModel)]="propertyName">
+        <span class="col-xs-1 txt-span">:</span>
+        <input class="col-xs-5" pInputText type="text" name="Value" placeholder="工程属性值" [(ngModel)]="propertyValue">
+        <p-footer>
+          <button type="button" pButton (click)="onAddProperty()" label="确认"></button>
+          <button type="button" pButton (click)="isShowDialog=false" label="取消"></button>
+        </p-footer>
+      </p-dialog>
+      <!--新建弹窗结束  -->
+    </form>
+  </div>
+  <div class="content-right">
+    <md-tab-group (selectedIndexChange)="onSelectedIndexChange($event)">
+
+      <md-tab label="效果图">
+        <div class="row button-row2">
+          <button md-icon-button class="right-button" mdTooltip="添加图片" (click)="showAddDialog()">
+            <i class="fa fa-plus-square-o fa-2x" aria-hidden="true" aria-label="新建图集"></i>
+          </button>
+          <button md-icon-button mdTooltip="编辑当前图片" (click)="showEditDialog()">
+              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" aria-label="编辑图片"></i>
+            </button>
+          <button md-icon-button class="right-button" mdTooltip="删除当前图片" (click)="removeSlide()">
+              <i class="fa fa-trash fa-2x" style="margin-top:-2px;margin-left:5px;" aria-hidden="true" aria-label="删除图片"></i>
+            </button>
+        </div>
+        <div *ngIf="slides[activeSlideIndex2]">
+          <button md-icon-button class="left-btn" (click)="pre(2)" [disabled]="activeSlideIndex2===0"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+          <div>
+            <img class="progress-img2" src="{{slides[activeSlideIndex2].File.FilePath}}">
+            <div class="carousel-caption2">
+              <h4>{{slides[activeSlideIndex2].Description}}</h4>
+              <p>{{slides[activeSlideIndex2].UploadTime}}</p>
+            </div>
+          </div>
+          <button md-icon-button class="right-btn2" (click)="next(2)" [disabled]="activeSlideIndex2===(imgLength-1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
+          <div>
+            <ul class="effect slide-div">
+              <li style="margin-top:0;" class="effect-li" *ngFor="let slide of slides">
+                <a role="button" (click)="select2(slide.ImgIndex)">
+                  <img class="li-img2" src="{{slide.Thumbnail}}">
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </md-tab>
+
+      <md-tab label="进度图" class="right">
+        <div class="right-content-left">
+          <div class="row button-row2">
+            <button md-icon-button class="right-button" mdTooltip="添加图片" (click)="showAddDialog()">
+              <i class="fa fa-plus-square-o fa-2x" aria-hidden="true" aria-label="新建进度图集"></i>
+            </button>
+            <button md-icon-button mdTooltip="编辑当前图片" (click)="showEditDialog()">
+              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" aria-label="编辑图片"></i>
+            </button>
+            <button md-icon-button class="right-button" mdTooltip="删除当前图片" (click)="removeSlide()">
+              <i class="fa fa-trash fa-2x" style="margin-top:-2px;margin-left:5px;" aria-hidden="true" aria-label="删除图片"></i>
+            </button>
+          </div>
+
+          <div class="left-pic" *ngIf="slides[activeSlideIndex]">
+            <button md-icon-button class="left-btn" (click)="pre(1)" [disabled]="activeSlideIndex===0"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+            <div>
+              <img class="progress-img" src="{{slides[activeSlideIndex].File.FilePath}}">
+              <div class="carousel-caption">
+                <h4>{{slides[activeSlideIndex].Description}}</h4>
+                <p>{{slides[activeSlideIndex].UploadTime}}</p>
+              </div>
+            </div>
+            <button md-icon-button class="right-btn" (click)="next(1)" [disabled]="activeSlideIndex===(slides.length-1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="right-content-right">
+          <div class="rtbox">
+            <ul *ngFor="let map of firstDataList">
+              <li>
+                <div class="lf">
+                  <span class="lf-line"></span>
+
+                  <h5>{{map.TimeStr}}</h5>
+                  <hr>
+                  <ul>
+                    <li *ngFor="let img of map.ImgList">
+                      <a role="button" (click)="select(img.ImgIndex)"><img src="{{img.Thumbnail}}" alt="工程进度图" class="li-img"></a>
+                    </li>
+                  </ul>
+                  <span class="lf-arrow"></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </div>
+</div>

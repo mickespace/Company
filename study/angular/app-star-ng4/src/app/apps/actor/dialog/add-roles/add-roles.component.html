@@ -1,0 +1,30 @@
+<h2 md-dialog-title>添加所属角色</h2>
+<md-dialog-content>
+  <p *ngIf="roleList?.length==0">无角色数据可供添加。</p>
+  <div class="ui-g ui-fluid">
+    <div class="ui-g ui-lg-12">
+      <p-dataTable [value]="roleList" selectionMode="multiple" [(selection)]="selRoles" (onRowSelect)="onSelect($event)">
+        <p-column field="Name" header="角色名"></p-column>
+        <p-column field="IsBelong">
+          <ng-template let-col let-role="rowData" pTemplate="body">
+            <span *ngIf="role[col.field]">
+              <i class="fa fa-check fa-lg color" aria-hidden="true" mdTooltip="已拥有此角色"></i>
+            </span>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+    <div class="ui-12 ui-lg-12">
+      <p class="tip-ope" (click)="onOpenTip()"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> 操作提示</p>
+      <div *ngIf="isOpen">
+        <p>1. "<i class="fa fa-check" aria-hidden="true"></i>"代表已拥有此角色，不可再选。</p>
+        <p>2. 鼠标“左键”点击列，选中预操作的项。</p>
+        <p>3. "Ctrl"键+鼠标“左键”点击列，多选操作。</p>
+      </div>
+    </div>
+  </div>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button type="submit" [disabled]="selRoles?.length == 0" (click)="OnAddRoles()">添加</button>
+  <button md-button md-dialog-close="true">关闭</button>
+</md-dialog-actions>

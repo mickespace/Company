@@ -1,0 +1,25 @@
+<h2 md-dialog-title>邀请成员</h2>
+
+<md-dialog-content>
+  <p class="line">方式一：</p>
+  <div class="style-one">
+    <button *ngIf="newCode==''" md-button (click)="onNewCode()">生成邀请码</button>
+    <div *ngIf="newCode!=''">
+      <span class="newcode">{{newCode}}</span>
+    </div>
+    <p class="tip"><i class="fa fa-exclamation-circle fa-lg orange" aria-hidden="true"></i> 请复制邀请码，发送至邀请成员的账号。</p>
+  </div>
+  <!-- <form #form="ngForm" (ngSubmit)="form.form.valid && onInvite()" novalidate role="form"> -->
+  <p class="line">方式二：</p>
+  <div class="form-item">
+    <md-input-container class="full-width">
+      <textarea mdInput placeholder="批量邀请" [(ngModel)]="memberStr" name="members" rows=6 required></textarea>
+      <md-error>邀请成员的账号不能为空！</md-error>
+    </md-input-container>
+  </div>
+  <p class="tip"><i class="fa fa-exclamation-circle fa-lg orange" aria-hidden="true"></i> 请输入邀请成员的账号，多个账号可换行输入，批量邀请。</p>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button type="submit" [disabled]="memberStr==''" (click)="onInvite()">邀请</button>
+  <button md-button md-dialog-close="true">取消</button>
+</md-dialog-actions>

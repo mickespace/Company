@@ -1,0 +1,119 @@
+.main-nav {
+  /*background: #0099FF;*/
+  min-height: 52px;
+  padding: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.navbar-toggle>.icon-bar {
+  background-color: black;
+}
+
+.nav>li>a {
+  color: black;
+  font-size: 16px;
+}
+
+.a-logout {
+  cursor: pointer;
+}
+
+.nav>li.active,
+.nav>li>a:hover,
+.nav>li>a:focus,
+.nav .open>a,
+.nav .open>a:hover,
+.nav .open>a:focus {
+  color: #25b7ff;
+  border-bottom: 1px solid #ff5722;
+}
+
+.navbar-brand-my {
+  color: #fff;
+  background: #25b7ff;
+  width: 250px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.navbar-right {
+  padding-right: 5px;
+}
+
+
+/*项目选择*/
+
+.dropdown-menu-project {
+  width: 250px;
+}
+
+.li-project {
+  cursor: pointer;
+  margin: 5px;
+  border-bottom: 1px solid #E3E3E3;
+}
+
+.li-project-img {
+  width: 75px;
+  height: 60px;
+  padding-left: 5px;
+}
+
+.li-project-owner {
+  margin: 4px 0 4px 0;
+  font-size: 12px;
+}
+
+.li-project-desc {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.pro-name {
+  color: #03A9F4;
+}
+
+.pro-createDate {
+  font-size: 12px;
+  color: #BDBDBD;
+}
+
+.btn-create-project {
+  width: 100%;
+}
+
+.tip-create {
+  display: block;
+  text-align: center;
+  font: 12px;
+  color: #43A047;
+}
+
+.li-more {
+  text-align: right;
+}
+
+.more-pro {
+  cursor: pointer;
+  text-decoration-line: underline;
+  color: #FF5722;
+}
+
+
+/*分割线*/
+
+.div-line {
+  border: 1px solid grey;
+  height: 24px;
+  width: 1px;
+  margin: 10px 15px 0px 15px;
+}
+
+
+/*用户信息*/
+
+.user-img {
+  border-radius: 150px;
+  width: 24px;
+  height: 24px;
+}

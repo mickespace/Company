@@ -1,0 +1,50 @@
+.material-icons {
+  float: right;
+  margin-top: -12px;
+  margin-right: -10px;
+  color: black;
+}
+
+hr {
+  margin-top: 10px;
+  border-color: lightgrey;
+}
+
+.txt {
+  height: 35px;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.mat-pro {
+  margin-top: 5px;
+}
+
+.button-row {
+  margin-left: 15px;
+  margin-right: 0;
+  margin-top: 15px;
+  display: table;
+  margin: 0 auto;
+}
+
+.right-button {
+  margin-right: 10px;
+}
+
+.button-style {
+  border: none;
+  background: none;
+}
+
+.description {
+  margin-left: 15px;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+.confirm-button {
+  margin-top: 20px;
+}

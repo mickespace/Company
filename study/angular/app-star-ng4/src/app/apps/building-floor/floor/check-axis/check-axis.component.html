@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-8 axis-content"></div>
+    <div class="col-xs-4">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>轴线名称</th>
+            <th>轴线类型</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let axis of axises">
+            <td>
+              {{axis.Name}}
+            </td>
+            <td>
+              {{axis.Type}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <button md-raised-button (click)="replaceAxis()">导入</button>
+    <button md-raised-button (click)="deleteAxis()">清除</button>
+    <button md-raised-button md-dialog-close>取消</button>
+  </div>
+</div>

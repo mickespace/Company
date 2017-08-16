@@ -1,0 +1,35 @@
+.content-title {
+  font-size: 16px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #f5f5f5;
+}
+
+.content-body {
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.secu-group {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f5f5f5;
+}
+
+.p-title {
+  font-size: 16px;
+  color: #555;
+  padding: 0px;
+  margin: 0px;
+}
+
+.p-default {
+  color: #9d9d9d;
+}
+
+.badge {
+  vertical-align: text-top;
+  background: #ff6700;
+  color: #fff;
+}

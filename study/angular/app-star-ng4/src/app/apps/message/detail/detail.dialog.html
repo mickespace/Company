@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2">
+      <img class="Avatar" src="{{data.Creator.Avatar}}" />
+    </div>
+    <div class="col-xs-10">
+      <h4 class="title">{{data.Title}}</h4>
+      <!--<img src="../assets/delete.png" />-->
+      <p class="title textColor">发件人：{{data.Creator.RealName}}</p>
+    </div>
+  </div>
+  <hr class="cutLine" />
+  <div class="row">
+    <div>
+      <p class="col-xs-4 text-left">消息内容：</p>
+      <p class="col-xs-8 text-right textColor">{{data.CreatedDate | date:'yyyy-MM-dd HH:mm'}} </p>
+    </div>
+    <div>
+      <p class="col-xs-12 ">{{data.Content}}
+      </p>
+    </div>
+  </div>
+  <hr class="cutLine" />
+  <div class="text-right">
+    <button md-raised-button (click)="onHandle()">{{data.ProcessText}}</button>
+    <button md-raised-button (click)="onDelete()">删除</button>
+  </div>
+</div>

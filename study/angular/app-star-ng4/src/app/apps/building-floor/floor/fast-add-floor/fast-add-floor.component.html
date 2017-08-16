@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <p class="col-xs-4">编码：</p>
+    <md-input-container class="col-xs-8">
+      <input mdInput [(ngModel)]="code">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">首层建筑标高：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="architectureElevation">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">首层结构标高：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="structureElevation">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">地上层数：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="aboveFloorCount">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">地上建筑层高：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="aboveArchitectureHeight">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">地上结构层高：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="aboveStructureHeight">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">地下层数：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="belowFloorCount">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">地下建筑层高：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="belowArchitectureHeight">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">地下结构层高：</p>
+    <md-input-container class="col-xs-8">
+      <input type="number" mdInput [(ngModel)]="belowStructureHeight">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">轴网文件：</p>
+    <md-input-container class="col-xs-6">
+      <input mdInput [(ngModel)]="axisFilePath">
+    </md-input-container>
+    <button class="col-xs-2" md-raised-button (click)="chooseFile()">选择...</button>
+  </div>
+  <button md-raised-button md-dialog-close>取消</button>
+  <button md-raised-button [md-dialog-close]="true" (click)="addFloors()">确定</button>
+</div>

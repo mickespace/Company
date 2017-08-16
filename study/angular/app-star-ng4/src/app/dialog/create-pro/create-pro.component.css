@@ -1,0 +1,26 @@
+.header {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-close {
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+
+/* 内容 */
+
+.form-item {
+  margin-top: 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.tip {
+  font-size: 12px;
+  color: #FF5722;
+}

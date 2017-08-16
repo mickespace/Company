@@ -1,0 +1,70 @@
+<div class="content-title">
+  <span>个 人 信 息</span>
+  <span class="title-ex"><i class="fa fa-tag" aria-hidden="true"></i>{{info.UserType | userTypeTrans}}</span>
+</div>
+<div class="content-body">
+  <form #form="ngForm" (ngSubmit)="form.form.valid && onSave()" novalidate role="form">
+    <div class="row">
+      <div class="col-xs-4">
+        <md-input-container>
+          <input mdInput placeholder="真实姓名" name="RealName" [(ngModel)]="info.RealName" disabled="{{isDisabled}}" required>
+          <md-error>请输入真实姓名</md-error>
+        </md-input-container>
+      </div>
+      <div class="col-xs-4">
+        <md-input-container>
+          <input mdInput [mdDatepicker]="picker" placeholder="生    日" name="Birthdate" [(ngModel)]="info.Birthdate" disabled="{{isDisabled}}">
+          <button *ngIf="!isDisabled" mdSuffix [mdDatepickerToggle]="picker"></button>
+        </md-input-container>
+        <md-datepicker #picker></md-datepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <md-input-container class="mid-length">
+          <input mdInput placeholder="地    址" name="Location" [(ngModel)]="info.Location" disabled="{{isDisabled}}">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <md-input-container class="mid-length">
+          <input mdInput placeholder="单位名称" name="CompanyName" [(ngModel)]="info.CompanyName" disabled="{{isDisabled}}">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row info-group">
+      <div class="col-xs-12">
+        <md-select placeholder="单位类型" [(ngModel)]="info.Industry" name="Industry" disabled="{{isDisabled}}">
+          <md-option *ngFor="let industry of industrys " [value]="industry">
+            {{industry}}
+          </md-option>
+        </md-select>
+      </div>
+    </div>
+    <div class="row info-group">
+      <div class="col-xs-12">
+        <md-select placeholder="个人职务" [(ngModel)]="info.JobPosition" name="JobPosition" disabled="{{isDisabled}}">
+          <md-option *ngFor="let job of jobs " [value]="job">
+            {{job}}
+          </md-option>
+        </md-select>
+      </div>
+    </div>
+    <!--operate edit-->
+    <div *ngIf="isDisabled" class="row info-group">
+      <div class="col-xs-12">
+        <button md-button (click)="onEdit()">编  辑</button>
+      </div>
+    </div>
+    <!--operate submit-->
+    <div *ngIf="!isDisabled" class="row info-group">
+      <div class="col-xs-3">
+        <button md-button type="submit" [disabled]="!form.form.valid">修  改</button>
+      </div>
+      <div class="col-xs-3">
+        <button md-button (click)="onCancle()">取  消</button>
+      </div>
+    </div>
+  </form>
+</div>

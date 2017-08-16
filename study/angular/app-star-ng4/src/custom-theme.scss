@@ -1,0 +1,47 @@
+/*
+ * @Author: zsq 
+ * @Date: 2017-06-29 11:51:36 
+ * @Last Modified by: 
+ * @Last Modified time: 2017-07-12 11:52:27
+ * @Desc:自适应主题-Material
+ */
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$custom-app-primary: mat-palette($mat-light-blue);
+$custom-app-accent: mat-palette($mat-light-blue, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$custom-app-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$custom-app-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-app-warn);
+@include angular-material-theme($custom-app-theme);
+.default-app-theme {
+  @include angular-material-theme($custom-app-theme);
+}
+
+// purple
+$purple-app-primary: mat-palette($mat-deep-purple);
+$purple-app-accent: mat-palette($mat-amber, A200, A100, A400);
+$purple-app-warn: mat-palette($mat-red);
+$purple-app-theme: mat-light-theme($purple-app-primary, $purple-app-accent, $purple-app-warn);
+// @include angular-material-theme($purple-app-theme);
+.purple-app-theme {
+  @include angular-material-theme($purple-app-theme);
+}
+
+// candy
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$candy-app-warn:mat-palette($mat-red);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent);
+// @include angular-material-theme($candy-app-theme);
+.candy-app-theme {
+  @include angular-material-theme($candy-app-theme);
+}

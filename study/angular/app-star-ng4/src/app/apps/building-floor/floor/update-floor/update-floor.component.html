@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <p class="col-xs-4">编码：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.Code">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">名称：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.Name">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">层：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.Index">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">建筑层高：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.ArchitectureHeight">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">结构层高：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.StructureHeight">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">建筑底标高：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.ArchitectureElevation">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">结构底标高：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.StructureElevation">
+    </md-input-container>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">备注：</p>
+    <md-input-container class="col-xs-8 example-full-width">
+      <input mdInput [(ngModel)]="floor.Description">
+    </md-input-container>
+  </div>
+  <button md-raised-button md-dialog-close>取消</button>
+  <button md-raised-button [md-dialog-close]="true" (click)="updateFloor()">确定</button>
+</div>

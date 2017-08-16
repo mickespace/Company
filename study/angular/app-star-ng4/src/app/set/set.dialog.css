@@ -1,0 +1,149 @@
+ul,
+li,
+img {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+  border: none
+}
+
+h4 {
+  margin-top: 10px;
+}
+
+span {
+  width: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:actived,
+a:hover {
+  color: #25b7ff;
+}
+
+.mat-list-item:hover {
+  color: grey;
+}
+
+.mat-list-item:active {
+  border-bottom: teal;
+  color: gray;
+}
+
+hr {
+  margin-top: 10px;
+  border-color: lightgrey;
+}
+
+
+/* .ui-tabview.ui-tabview-left>.ui-tabview-nav li {
+  margin: 5px 0;
+} */
+
+.unicorn-dark-theme {
+  background: #ffffff;
+}
+
+.material-icons {
+  float: right;
+  margin-top: -12px;
+  margin-right: -10px;
+  color: black;
+}
+
+.basic {
+  display: block;
+  margin-top: -15px;
+  margin-left: 10px;
+}
+
+.pro-ico {
+  width: 550px;
+  height: 250px;
+  background-color: #ffeecc;
+}
+
+.upload {
+  position: relative;
+  left: -140px;
+  top: 205px;
+}
+
+.content-right {
+  display: block;
+  float: left;
+}
+
+.list {
+  padding-top: 8px;
+  display: table-cell;
+  margin: auto;
+}
+
+.mat-input-container {
+  width: 220px;
+}
+
+[aria-disabled=true] .mat-select-trigger {
+  width: 220px;
+}
+
+.mat-select-trigger {
+  height: 50px;
+  min-width: 180px;
+  margin-left: -20px;
+  margin-top: 14px;
+}
+
+.mat-input-infix[_ngcontent-c12] {
+  width: 220px;
+}
+
+.mat-input-infix {
+  margin-top: 8px;
+  padding-top: 0;
+}
+
+.mat-pro {
+  margin-top: 5px;
+}
+
+.button-fix {
+  margin-left: 140px;
+}
+
+.app-icon {
+  height: 50px;
+  width: 50px;
+}
+
+.app-name {
+  display: inline;
+  padding-left: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.left-nav {
+  background-color: #ffffff;
+  /* height: 600px; */
+  margin-top: 10px;
+}
+
+.mat-radio-label-content {
+  margin-left: 20px;
+}
+
+.tip-ope {
+  cursor: pointer;
+  color: #FF5722;
+  margin-top: 20px;
+}

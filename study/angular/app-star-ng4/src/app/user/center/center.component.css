@@ -1,0 +1,83 @@
+/*左侧栏*/
+
+.center-nav {
+  background: #fff;
+}
+
+.center-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.avavtar-label {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.user-avatar {
+  border: 1px solid #e0e0e0;
+  border-radius: 150px;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.user-avatar:hover {
+  border: 2px solid #25B7FF;
+}
+
+.avatar-input {
+  display: none;
+}
+
+.user-info {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 16px;
+  font: bold;
+}
+
+.center-box {
+  height: 400px;
+}
+
+.box-ul {
+  width: 220px;
+  list-style-type: none;
+  margin: 0 auto;
+  padding-left: 0px;
+  text-align: center;
+}
+
+.box-ul>li {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 32px;
+  padding: 5px;
+  background: #f5f5f5;
+  color: #25b7ff;
+}
+
+.box-ul>li>a {
+  font-size: 16px;
+  text-decoration: none;
+  color: gray;
+}
+
+.box-ul>li>a.active,
+.box-ul>li>a:hover,
+.box-ul>li>a:focus {
+  font-size: 16px;
+  text-decoration: none;
+  color: #25b7ff;
+}
+
+
+/*右侧内容*/
+
+.center-content {
+  background: #fff;
+  padding: 60px;
+  height: 567px;
+}

@@ -1,0 +1,19 @@
+<button class="material-icons button-style" md-dialog-close>
+   <i class="fa fa-times" aria-hidden="true"></i>
+</button>
+<h4 md-dialog-title>修改图集</h4>
+<hr>
+<form #form="ngForm" (ngSubmit)="form.form.valid&&onSave()" method="post" name="fileinfo" novalidate role="form">
+  <div class="row">
+    <span class="col-xs-3 txt">日期：</span>
+    <p-calendar class="col-xs-7" [showTime]="true" [showIcon]="true" name="phUpload+updateItem._id" [(ngModel)]="updateItem.UploadTime"></p-calendar>
+  </div>
+  <div class="row">
+    <span class="col-xs-3 txt">描述：</span>
+    <textarea class="col-xs-7 description" rows="5" cols="30" pInputTextarea name="phDescription-updateItem._id" [(ngModel)]="updateItem.Description"></textarea>
+  </div>
+  <div class="row button-row confirm-button">
+    <button md-button md-raised-button type="submit" [disabled]="!form.form.valid">确定</button>
+    <button md-button md-raised-button md-dialog-close>取消</button>
+  </div>
+</form>

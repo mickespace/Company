@@ -1,0 +1,106 @@
+<a href="#" role="button" md-dialog-close><i class="material-icons">close</i></a>
+<div class="row left-nav">
+  <div class="col-xs-3">
+    <md-list class="list">
+      <md-list-item><a md-button class="mat-list-item" (click)="change0()"> 基本信息 </a></md-list-item>
+      <md-list-item><a md-button class="mat-list-item" (click)="change1()"> 应用管理 </a></md-list-item>
+      <md-list-item><a md-button class="mat-list-item" (click)="change2()"> 更多设置 </a></md-list-item>
+    </md-list>
+  </div>
+  <div class="content-right col-xs-9">
+    <div *ngIf="value0">
+      <h4>基 本 信 息</h4>
+      <hr>
+      <form #form="ngForm" (ngSubmit)="form.form.valid&&onSave()" enctype="multipart/form-data" method="post" name="fileinfo" novalidate
+        role="form">
+        <div class="row">
+          <div class="col-xs-9">
+            <img src="{{project.Icon}}" class="pro-ico">
+          </div>
+          <div class="col-xs-3">
+            <!-- <p-fileUpload mode="basic" previewWidth="10px" chooseLabel="更换" name="myfile[]" url="v1/project/update" accept="image/*"
+              auto="auto" maxFileSize="1000000" [hidden]="isDisabled" (onUpload)="onPhotoUpload($event)"></p-fileUpload> -->
+            <input class="upload" type="file" placeholder="上传" (change)="onPhotoUpload($event)" accept="image/*" [disabled]="isDisabled"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <md-input-container>
+              <input class="mat-input-infix" mdInput placeholder="项目名称" name="Name" [(ngModel)]="project.Name" disabled="{{isDisabled}}"
+                required>
+              <md-error>请输入项目名称</md-error>
+            </md-input-container>
+          </div>
+          <div class="col-xs-6">
+            <md-select class="mat-select-trigger" placeholder="公开性" name="name" [(ngModel)]="project.Publicity" disabled="{{isDisabled}}"
+              required ngControl #name="ngModel">
+              <md-option class="mat-select-trigger" *ngFor="let publicity of PublicityList " [value]="publicity">
+                {{publicity | sexReform}}
+              </md-option>
+            </md-select>
+            <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+              姓名是必填项
+            </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <md-select class="mat-input-infix" placeholder="拥有者" name="OwnerId" [(ngModel)]="project.OwnerId" disabled="{{isDisabled}}"
+              required>
+              <md-option *ngFor="let ownerid of OwnerList " [value]="ownerid.id">
+                {{ownerid.name}}
+              </md-option>
+            </md-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <md-input-container class="mat-pro">
+              <textarea mdInput placeholder="项目介绍" name="Description" [(ngModel)]="project.Description" disabled="{{isDisabled}}"></textarea>
+            </md-input-container>
+          </div>
+        </div>
+        <div class="row button-fix" *ngIf="isDisabled">
+          <div class="col-xs-12">
+            <button md-button md-raised-button (click)="onEdit()">编  辑</button>
+          </div>
+        </div>
+        <div class="row button-fix" *ngIf="!isDisabled">
+          <div class="col-xs-3">
+            <button md-button md-raised-button type="submit" [disabled]="!form.form.valid">保  存</button>
+          </div>
+          <div class="col-xs-3">
+            <button md-button md-raised-button (click)="onCancle()">取  消</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="value1">
+      <h4>应 用 管 理</h4>
+      <hr>
+      <div class="row">
+        <div *ngFor="let app of apps" class="col-xs-12">
+          <img class="app-icon" src="{{app.Icon}}" alt="">
+          <p class="app-name">{{app.Name}}</p>
+          <md-radio-group *ngIf="app.AppType == 0" [(ngModel)]="app.Statue">
+            <!-- <span *ngIf="!(app.AppType === 1)&&!(app.AppType === 0)">
+              <md-radio-button value="1" class="mat-checkbox-inner-container" disabled="true">{{true | openReform}}</md-radio-button>
+              <md-radio-button value="2" class="mat-checkbox-inner-container" disabled="true">{{false | openReform}}</md-radio-button>
+            </span> -->
+            <!--{{isOpen | openReform}}  -->
+            <md-radio-button *ngFor="let add of addornotList2" [value]="add.key" class="mat-radio-label-content" (change)="onChange($event,add)">{{add.value}}</md-radio-button>
+            <!-- <md-radio-button class="mat-checkbox-inner-container" (click)="onClose($event)">禁用</md-radio-button> -->
+          </md-radio-group>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="value2">
+      <h4>更 多 设 置</h4>
+      <hr>
+      <button md-button md-raised-button href="javascript:if(confirm('确认删除本项目？'))" (click)="onConfirm();">删除项目</button>
+      <p class="tip-ope"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> 操作提示</p>
+      <p>删除项目后无法复原，请确认是否要删除该项目</p>
+    </div>
+  </div>
+</div>

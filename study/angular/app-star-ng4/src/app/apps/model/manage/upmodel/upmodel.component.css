@@ -1,0 +1,24 @@
+.header {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-close {
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+
+/* o-tips */
+
+.tip {
+  margin-top: 10px;
+  color: #616161;
+}
+
+.tip-ope {
+  cursor: pointer;
+  color: #FF5722;
+  text-decoration: underline;
+}

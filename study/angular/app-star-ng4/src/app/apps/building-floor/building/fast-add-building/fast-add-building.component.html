@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <md-input-container class="row container-div">
+    <textarea class="textarea-style" [(ngModel)]="BuildingInfos" mdInput placeholder="格式示例：A，A栋，3000，A栋建筑（Enter键换行，批量添加单体。）"></textarea>
+  </md-input-container>
+  <div class="row buttons-style">
+    <button md-raised-button md-dialog-close>取消</button>
+    <button md-raised-button [md-dialog-close]="true" (click)="addBuildings()">确定</button>
+  </div>
+</div>

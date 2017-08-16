@@ -1,0 +1,134 @@
+<div class="container-fluid">
+  <!--<input #myInput type="text" id="zsq" value="999" />
+  <div #myDiv></div>
+-->
+
+  <div class="dashboard-container">
+    <md-card>
+      <md-select placeholder="仪表板" mdTooltip="选择仪表板" [ngModel]="selectDash" name="DashSelect" (ngModelChange)="onDashChange($event)">
+        <md-option *ngFor="let dash of dashList" [value]="dash">
+          {{ dash.Name }}
+        </md-option>
+      </md-select>
+      <button md-button (click)="addNewDash()" mdTooltip="新建仪表板">
+        <md-icon>add</md-icon>
+      </button>
+      <!--小部件下拉-->
+      <div class="dropdown drownlist-widget">
+        <button md-button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          mdTooltip="添加小部件">
+          添加小部件<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li *ngFor="let item of widgetList">
+            <a href="javascript:void(0);" (click)="addWidget($event,item)">{{item.Name}}</a>
+          </li>
+        </ul>
+      </div>
+    </md-card>
+
+    <!--<md-toolbar>
+      <div class="main-toolbar">
+        <button md-mini-fab (click)="addItem()" mdTooltip="Add Mes widget">
+          <md-icon>add</md-icon>
+        </button>
+        <button md-mini-fab (click)="addItem2()" mdTooltip="Add Org widget">
+          <md-icon>add</md-icon>
+        </button>
+        <button md-fab (click)="changeDash()" mdTooltip="切换仪表板">
+          <md-icon>切换</md-icon>
+        </button>
+        <md-select aria-label="Grid type" [(ngModel)]="options.gridType" (ngModelChange)="changedOptions()" placeholder="Grid Type">
+          <md-option value="fit">Fit to screen</md-option>
+          <md-option value="scrollVertical">Scroll Vertical</md-option>
+          <md-option value="scrollHorizontal">Scroll Horizontal</md-option>
+          <md-option value="fixed">Fixed</md-option>
+        </md-select>
+        <md-select aria-label="Compact type" [(ngModel)]="options.compactType" (ngModelChange)="changedOptions()" placeholder="Compact Type">
+          <md-option value="none">None</md-option>
+          <md-option value="compactUp">Compact Up</md-option>
+          <md-option value="compactLeft">Compact Left</md-option>
+          <md-option value="compactLeft&Up">Compact Left & Up</md-option>
+          <md-option value="compactUp&Left">Compact Up & Left</md-option>
+        </md-select>
+        <md-checkbox [(ngModel)]="options.swap" (ngModelChange)="changedOptions()">
+          Swap Items
+        </md-checkbox>
+        <md-checkbox [(ngModel)]="options.pushItems" (ngModelChange)="changedOptions()">
+          Push Items
+        </md-checkbox>
+        <md-checkbox [(ngModel)]="options.draggable.enabled" (ngModelChange)="changedOptions()">
+          Drag Items
+        </md-checkbox>
+        <md-checkbox [(ngModel)]="options.resizable.enabled" (ngModelChange)="changedOptions()">
+          Resize Items
+        </md-checkbox>
+        <div class="margin-slider">
+          <div><span>Margin</span></div>
+          <md-slider aria-label="Margin" thumbLabel min="0" max="30" step="1" (ngModelChange)="changedOptions()" [(ngModel)]="options.margin"></md-slider>
+        </div>
+        <md-checkbox [(ngModel)]="options.outerMargin" (ngModelChange)="changedOptions()">Outer Margin</md-checkbox>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.maxItemCols" type="number" placeholder="Max Item Cols" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.minItemCols" type="number" placeholder="Min Item Cols" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.maxItemRows" type="number" placeholder="Max Item Rows" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.minItemRows" type="number" placeholder="Min Item Rows" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.defaultItemRows" type="number" placeholder="Default Item Rows" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.defaultItemCols" type="number" placeholder="Default Item Cols" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.fixedColWidth" type="number" placeholder="Fixed Col Width" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.fixedRowHeight" type="number" placeholder="Fixed Row Height" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.minCols" type="number" placeholder="Min Grid Cols" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.maxCols" type="number" placeholder="Max Grid Cols" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.minRows" type="number" placeholder="Min Grid Rows" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput [(ngModel)]="options.maxRows" type="number" placeholder="Max Grid Rows" (ngModelChange)="changedOptions()">
+        </md-input-container>
+        <md-select aria-label="Display grid lines" [(ngModel)]="options.displayGrid" placeholder="Display grid lines" (ngModelChange)="changedOptions()">
+          <md-option value="always">Always</md-option>
+          <md-option value="onDrag&Resize">On Drag & Resize</md-option>
+          <md-option value="none">None</md-option>
+        </md-select>
+      </div>
+    </md-toolbar>-->
+
+    <gridster [options]="options">
+      <gridster-item [item]="item" *ngFor="let item of curDashView; let i=index">
+        {{i+1}}
+        <div class="item-buttons">
+          <button md-icon-button md-raised-button class="drag-handler" mdTooltip="移动">
+            <md-icon>open_with</md-icon>
+          </button>
+          <button md-icon-button md-raised-button class="remove-button" (click)="removeItem($event, item)" (touchstart)="removeItem($event, item)"
+            mdTooltip="移除">
+            <md-icon>clear</md-icon>
+          </button>
+        </div>
+        <!--消息部件-->
+        <app-message-widget *ngIf="item.WidgetKey == '4A92BCA6-377D-48C3-9DF3-2CE9446017DD'"></app-message-widget>
+        <!--项目概况部件-->
+        <app-projectinfo-widget *ngIf="item.WidgetKey == '4A92BCA6-377D-48C3-9DF3-2CE9446017DF'"></app-projectinfo-widget>
+      </gridster-item>
+    </gridster>
+  </div>
+</div>

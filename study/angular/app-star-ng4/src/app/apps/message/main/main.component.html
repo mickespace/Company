@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <md-tab-group (selectedIndexChange)="onChangeTab($event)">
+    <md-tab class="tab-content">
+      <ng-template md-tab-label>
+        <p>项目消息<span class="badge badge-number" *ngIf="projectMessCount>0">{{projectMessCount}}</span></p>
+      </ng-template>
+      <div class="inner-div">
+        <div class="row message-row">
+          <button class="col-xs-1" md-button (click)="onRefresh()">刷新</button>
+          <button class="col-xs-1" md-button (click)="onAllChecked()">全选</button>
+          <button class="col-xs-1" md-button (click)="onMarkRead()">已读</button>
+          <button class="col-xs-1" md-button (click)="onDelete()">删除</button>
+          <md-select class="col-xs-1" placeholder="消息类型" [ngModel]="selMessageType" (ngModelChange)="onSetMessageType($event)">
+            <md-option *ngFor="let type of messageType" [value]="type">
+              {{ type.ViewValue }}
+            </md-option>
+          </md-select>
+        </div>
+        <div class="row message-row" *ngFor="let messageModel of messageModels">
+          <div class="row">
+            <md-checkbox class="col-xs-1 checkbox-align" [(ngModel)]="messageModel.IsChecked"></md-checkbox>
+            <img class="col-xs-1 avatar" src="{{messageModel.Creator.Avatar}}" (click)="onDetail(messageModel)" />
+            <p class="col-xs-2 text-ellipsis" (click)="onDetail(messageModel)">{{messageModel.Title}}</p>
+            <p class="col-xs-4 text-ellipsis" (click)="onDetail(messageModel)">{{messageModel.Content}}</p>
+          </div>
+          <hr class="cutLine" />
+        </div>
+      </div>
+    </md-tab>
+    <md-tab class="tab-content">
+      <ng-template md-tab-label>
+        <p>系统消息<span class="badge badge-number" *ngIf="systemMessCount>0">{{systemMessCount}}</span></p>
+      </ng-template>
+      <div class="inner-div">
+        <div class="row message-row button-refresh">
+          <button class="col-xs-1" md-button (click)="onRefresh()">刷新</button>
+          <button class="col-xs-1" md-button (click)="onAllChecked()">全选</button>
+          <button class="col-xs-1" md-button (click)="onMarkRead()">已读</button>
+          <button class="col-xs-1" md-button (click)="onDelete()">删除</button>
+          <md-select class="col-xs-1" placeholder="消息类型" [ngModel]="selMessageType" (ngModelChange)="onSetMessageType($event)">
+            <md-option *ngFor="let type of messageType" [value]="type">
+              {{ type.ViewValue }}
+            </md-option>
+          </md-select>
+        </div>
+        <div class="row message-row" *ngFor="let messageModel of messageModels">
+          <div class="row">
+            <md-checkbox class="col-xs-1 checkbox-align" [(ngModel)]="messageModel.IsChecked"></md-checkbox>
+            <img class="col-xs-1 avatar" src="{{messageModel.Creator.Avatar}}" (click)="onDetail(messageModel)" />
+            <p class="col-xs-2 text-ellipsis" (click)="onDetail(messageModel)">{{messageModel.Title}}</p>
+            <p class="col-xs-4 text-ellipsis" (click)="onDetail(messageModel)">{{messageModel.Content}}</p>
+          </div>
+          <hr class="cutLine" />
+        </div>
+      </div>
+    </md-tab>
+  </md-tab-group>
+</div>

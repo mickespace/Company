@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="col-xs-6">
+    <md-toolbar class="header-tool" color="primary">
+      <a mdTooltip="刷新" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onRefresh()">
+        <md-icon>refresh</md-icon>
+      </a>
+      <a mdTooltip="快速新建" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onAddBuildings()">
+        <md-icon>add_circle_outline</md-icon>
+      </a>
+      <a mdTooltip="新建单体" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onAddBuilding()">
+        <md-icon>add</md-icon>
+      </a>
+      <a mdTooltip="删除单体" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onDeleteBuilding()">
+        <md-icon>delete</md-icon>
+      </a>
+      <a mdTooltip="修改单体" class="tool-button" md-mini-fab href="javascript:void(0);" (click)="onUpdateBuilding()">
+        <md-icon>update</md-icon>
+      </a>
+    </md-toolbar>
+    <app-building-list [buildings]="buildings | async" (changeBuilding)="onChangeBuilding($event)"></app-building-list>
+  </div>
+  <div class="col-xs-6" *ngIf="chooseBuildingId">
+    <app-floor [buildingId]="chooseBuildingId"></app-floor>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="content-title">安 全 设 置</div>
+<div class="content-body">
+  <div class="row secu-group">
+    <div class="col-xs-8">
+      <p class="p-title">账号密码</p>
+      <p class="p-default">用于保护帐号信息和登录安全</p>
+    </div>
+    <div class="col-xs-4">
+      <button md-button (click)="changePassword()">修改密码</button>
+    </div>
+  </div>
+  <div class="row secu-group">
+    <div class="col-xs-8">
+      <p class="p-title">
+        安全手机 {{user.PhoneNumber}} <span *ngIf="user.PhoneNumber==null" class="badge">无</span>
+      </p>
+      <p class="p-default">用于登录筑星账号，重置密码或其他安全验证</p>
+    </div>
+    <div class="col-xs-4">
+      <button md-button *ngIf="user.PhoneNumber==null" (click)="bindPhone()">绑定手机</button>
+    </div>
+  </div>
+  <div class="row secu-group">
+    <div class="col-xs-8">
+      <p class="p-title">
+        安全邮箱 {{user.Email}}<span *ngIf="user.Email==null" class="badge">无</span>
+      </p>
+      <p class="p-default">用于登录筑星账号，重置密码或其他安全验证</p>
+    </div>
+    <div class="col-xs-4">
+      <button md-button *ngIf="user.Email==null" (click)="bindEmail()">绑定邮箱</button>
+    </div>
+  </div>
+</div>

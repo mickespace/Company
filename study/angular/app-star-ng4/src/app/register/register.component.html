@@ -1,0 +1,159 @@
+<div class="register-container">
+  <div class="register-step">
+    <span class="glyphicon glyphicon-user"></span>
+    <div class="step-line1" [class.lineActive]="stepNumber>1"></div>
+    <span class="glyphicon glyphicon-cloud" [class.iconActive]="stepNumber>1"></span>
+    <div class="step-line2" [class.lineActive]="stepNumber>2"></div>
+    <span class="glyphicon glyphicon-ok" [class.iconActive]="stepNumber>2"></span>
+  </div>
+  <!--step1输入账号-->
+  <div *ngIf="stepNumber==1" class="register-set-container">
+    <div class="tip-title">注册BIM-STAR账号</div>
+    <div class="register-group">
+      <p>请输入邮箱或手机号码注册：</p>
+    </div>
+    <form #form="ngForm" (ngSubmit)="form.form.valid && checkAccount()" novalidate role="form">
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-input-container class="full">
+            <input mdInput placeholder="邮箱/手机号码" name="account" [(ngModel)]="account" required>
+            <md-error>请输入邮箱或手机号码</md-error>
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <button type="submit" class="btn-sure" md-button>下一步</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!--step2验证码-->
+  <div *ngIf="stepNumber==2" class="register-set-container">
+    <!--手机验证码验证-->
+    <div *ngIf="isPhone">
+      <div class="tip-title">验证账号</div>
+      <div class="register-group">
+        我们已经发送一条验证短信至：
+        <p class="tip-account">+86 {{account}}</p>
+      </div>
+      <div class="register-group">
+        <p>请输入短信中的验证码</p>
+      </div>
+      <form #phoneForm="ngForm" (ngSubmit)="checkCode()" novalidate role="form">
+        <div class="row register-group">
+          <div class="col-xs-6">
+            <md-input-container>
+              <input mdInput placeholder="验证码" name="phoneCode" [(ngModel)]="verifyCode" required>
+              <md-error>请输入验证码</md-error>
+            </md-input-container>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn-sendCode" md-button (click)="sendCode()" [disabled]="!canSend">{{sendBtnTitle}}</button>
+          </div>
+        </div>
+        <div class="row register-group">
+          <div class="col-xs-12">
+            <button class="btn-sure" type="submit" [disabled]="!phoneForm.form.valid" md-button>下一步</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!--邮箱发送-->
+    <div *ngIf="!isPhone">
+      <div class="tip-title">验证账号</div>
+      <div class="register-group">
+        我们已经发送一封邮件至：
+        <p class="tip-account">{{account}}</p>
+      </div>
+      <div class="register-group">
+        <p>请输入邮件中的验证码</p>
+      </div>
+      <form #emailForm="ngForm" (ngSubmit)="checkCode()" novalidate role="form">
+        <div class="row register-group">
+          <div class="col-xs-6">
+            <md-input-container>
+              <input mdInput placeholder="验证码" name="emailCode" [(ngModel)]="verifyCode" required>
+              <md-error>请输入验证码</md-error>
+            </md-input-container>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn-sendCode" md-button (click)="sendCode()" [disabled]="canSend">{{sendBtnTitle}}</button>
+          </div>
+        </div>
+        <div class="row register-group">
+          <div class="col-xs-12">
+            <button class="btn-sure" type="submit" [disabled]="!emailForm.form.valid" md-button>下一步</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--step3 reset-->
+  <div *ngIf="stepNumber==3" class="register-set-container">
+    <div class="tip-title">设置BIM-STAR账号</div>
+    <form #form="ngForm" (ngSubmit)="form.form.valid && register()" novalidate role="form">
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-input-container class="full">
+            <input type="password" mdInput placeholder="密码" name="password" [(ngModel)]="password" required>
+            <md-error>请输入密码</md-error>
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-input-container class="full">
+            <input type="password" mdInput placeholder="确认密码" name="passwordConfirm" [(ngModel)]="passwordConfirm" required>
+            <md-error>请再次输入密码</md-error>
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-input-container class="full">
+            <input mdInput placeholder="真实姓名" name="RealName" [(ngModel)]="RealName" required>
+            <md-error>请输入真实姓名</md-error>
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-select class="full" placeholder="单位类型" [(ngModel)]="selectedIndustry" name="Industry">
+            <md-option *ngFor="let industry of industrys " [value]="industry">
+              {{industry}}
+            </md-option>
+          </md-select>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-input-container class="full">
+            <input mdInput placeholder="单位名称" name="CompanyName" [(ngModel)]="CompanyName">
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-select class="full" placeholder="个人职务" [(ngModel)]="selectedJob" name="Job">
+            <md-option *ngFor="let job of jobs " [value]="job">
+              {{job}}
+            </md-option>
+          </md-select>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <md-input-container class="full">
+            <input mdInput placeholder="邀请码" name="InviteCode" [(ngModel)]="InviteCode">
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row register-group">
+        <div class="col-xs-12">
+          <button class="btn-sure" type="submit" md-button>确定</button>
+        </div>
+      </div>
+    </form>
+  </div>

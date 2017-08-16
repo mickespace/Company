@@ -1,0 +1,82 @@
+<div class="title">实体模型 - <strong>{{proName}}</strong></div>
+<div class="ui-g ui-fluid">
+  <div class="ui-12 ui-lg-12">
+    <p-treeTable [value]="treeNodeList" selectionMode="multiple" [(selection)]="selNodes" (onNodeSelect)="nodeSelect($event)"
+      [contextMenu]="modelCm">
+      <p-header class="p-header">
+        <div>
+          <button md-icon-button mdTooltip="刷新" (click)="refresh()">
+            <md-icon>refresh</md-icon>
+          </button>
+          <button *ngIf="selNode!=null && addNodeAccess" md-icon-button mdTooltip="添加分组" disabled="{{!isGroup}}" (click)="addGroup()">
+            <i class="fa fa-object-group fa-lg" aria-hidden="false" aria-label="新建分组"></i>
+          </button>
+          <button *ngIf="selNode!=null && addNodeAccess" md-icon-button mdTooltip="添加模型" disabled="{{!isGroup}}" (click)="addModelFile()"
+            type="file">
+            <i class="fa fa-plus-circle fa-lg" aria-hidden="false" aria-label="添加模型"></i>
+          </button>
+          <button *ngIf="selNode!=null && modifyNodeAccess" md-icon-button mdTooltip="更新模型" disabled="{{isGroup}}" (click)="updateModelFile()">
+            <i class="fa fa-refresh fa-lg" aria-hidden="false" aria-label="更新模型"></i>
+          </button>
+          <button *ngIf="selNode!=null && deleteNodeAccess" md-icon-button mdTooltip="删除" (click)="deleteNodes()" disabled="{{isBuilding}}">
+            <i class="fa fa-trash-o fa-lg" aria-hidden="false" aria-label="删除"></i>
+          </button>
+          <button md-icon-button mdTooltip="全部展开" (click)="expandAll()">
+            <i class="fa fa-arrows-alt fa-lg" aria-hidden="false" aria-label="全部展开"></i>
+          </button>
+          <button md-icon-button mdTooltip="全部收起" (click)="collapseAll()">
+            <i class="fa fa-compress fa-lg" aria-hidden="false" aria-label="全部收起"></i>
+          </button>
+        </div>
+        <div class="header-tip" *ngIf="selNode!=null"><i class="fa fa-flag-checkered fa-lg" aria-hidden="true"></i> 当前选中为：{{selNode?.data.Name}}</div>
+      </p-header>
+      <p-footer>
+        <div class="t-footer" *ngIf="modelFilesCount>0">
+          <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i> 数据获取成功，模型文件{{modelFilesCount}}个。
+        </div>
+      </p-footer>
+      <p-column field="Name" header="名称">
+        <ng-template let-col let-node="rowData" pTemplate="body">
+          <span class="intercept-col" mdTooltip="{{node.data.Name}}">{{node.data.Name}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="FsName" header="文件名称">
+        <ng-template let-col let-node="rowData" pTemplate="body">
+          <span class="intercept-col col-fsname" mdTooltip="{{node.data.FsName}}">{{node.data.FsName}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="FsFileSize" header="文件大小">
+        <ng-template let-col let-node="rowData" pTemplate="body">
+          <span>{{node.data.FsFileSize | filesizeTran}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="ElevationSystem" header="标高体系">
+        <ng-template let-col let-node="rowData" pTemplate="body">
+          <span>{{node.data.ElevationSystem | elevationTran}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="FsUpdateDate" header="更新时间">
+        <ng-template let-col let-node="rowData" pTemplate="body">
+          <span>{{node.data.FsUpdateDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </ng-template>
+      </p-column>
+      <p-column field="Description" header="描述">
+        <ng-template let-col let-node="rowData" pTemplate="body">
+          <span class="intercept-col" mdTooltip="{{node.data.Description}}">{{node.data.Description}}</span>
+        </ng-template>
+      </p-column>
+    </p-treeTable>
+  </div>
+  <div class="ui-12 ui-lg-12">
+    <p class="tip-ope" (click)="onOpenTip()"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> 操作提示</p>
+    <div *ngIf="isOpen">
+      <p>1. 实体模型列表，顶节点为项目节点，叶节点为“模型文件”，其余为“分组”</p>
+      <p>2. 鼠标“左键”点击列，选中预操作的项</p>
+      <p>3. 当选中的项为“顶级”时，可在其中“新建分组”、新增模型文件</p>
+      <p>4. 当选中的项为“分组”时，可在其中“新建分组”、新增模型文件、删除操作（注意，其子集会一并删除）</p>
+      <p>5. 当选中项为“模型文件”，可对模型文件“删除”、“更新”操作</p>
+      <p>6. 为方便操作，选中项后，可点击鼠标“右键”，弹出右键菜单</p>
+    </div>
+  </div>
+</div>
+<p-contextMenu #modelCm [model]="cmItems"></p-contextMenu>

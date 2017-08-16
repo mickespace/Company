@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="center-nav">
+        <div class="center-header">
+          <label class="avavtar-label" for="avatar-input">
+            <img class="user-avatar" src="{{user.Avatar}}" mdTooltip="点击上传新的头像">
+          </label>
+          <input class="avatar-input" type="file" id="avatar-input" name="avatar-input" value="" (change)="updateAvatar($event)" accept="image/*">
+          <div class="user-info">
+            {{user.RealName}}
+          </div>
+        </div>
+        <div class="center-box">
+          <ul class="box-ul">
+            <li>
+              <a routerLink="info" routerLinkActive="active"><span class="glyphicon glyphicon-user"></span> 个 人 信 息</a>
+            </li>
+            <li>
+              <a routerLink="security" routerLinkActive="active"><span class="glyphicon glyphicon-lock"></span> 安 全 设 置</a>
+            </li>
+            <li>
+              <a routerLink="appMgt" routerLinkActive="active"><span class="glyphicon glyphicon-gift"></span> 应 用 管 理</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <div class="center-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<h2 md-dialog-title>加入组织(部门)</h2>
+<md-dialog-content>
+  <p *ngIf="treeNodeList?.length==0">当前项目没有组织数据，请添加组织。</p>
+  <div class="ui-g ui-fluid">
+    <div class="ui-g ui-lg-12">
+      <p-treeTable *ngIf="treeNodeList?.length>0" [value]="treeNodeList" selectionMode="multiple" [(selection)]="selNodes">
+        <p-column field="Name" header="组织名称">
+          <ng-template let-col let-node="rowData" pTemplate="body">
+            <span>{{node.data.Name}}</span>
+          </ng-template>
+        </p-column>
+        <p-column>
+          <ng-template let-col let-node="rowData" pTemplate="body">
+            <span *ngIf="!node.selectable"><i class="fa fa-check fa-lg color" aria-hidden="true" mdTooltip="已在组织中"></i></span>
+          </ng-template>
+        </p-column>
+      </p-treeTable>
+    </div>
+    <div class="ui-12 ui-lg-12">
+      <p class="tip-ope" (click)="onOpenTip()"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> 操作提示</p>
+      <div *ngIf="isOpen">
+        <p>1. "<i class="fa fa-check" aria-hidden="true" mdTooltip="已在组织中"></i>"代表已经在组织中，不可再选。</p>
+        <p>2. 鼠标“左键”点击列，选中预操作的项。</p>
+        <p>3. "Ctrl"键+鼠标“左键”点击列，多选操作。</p>
+      </div>
+    </div>
+  </div>
+</md-dialog-content>
+<md-dialog-actions *ngIf="treeNodeList?.length>0">
+  <button md-button type="submit" [disabled]="selNodes?.length == 0" (click)="onJoin()">加入</button>
+  <button md-button md-dialog-close="true">关闭</button>
+</md-dialog-actions>

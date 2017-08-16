@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="nav-left">
+    <md-list class="nav-list">
+      <md-list-item *ngFor="let app of proRouteList">
+        <a class="nav-a" routerLink="{{app.appName}}" routerLinkActive="active">
+          <md-icon>{{app.appIcon}}</md-icon> {{app.appDisplay}}</a>
+      </md-list-item>
+    </md-list>
+  </div>
+  <div class="con-right">
+    <router-outlet></router-outlet>
+  </div>
+</div>

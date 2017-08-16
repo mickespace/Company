@@ -1,0 +1,47 @@
+<h2 md-dialog-title>修改密码</h2>
+<form #form="ngForm" (ngSubmit)="form.form.valid" novalidate role="form">
+  <md-dialog-content>
+    <div class="row pwd-group">
+      <div class="col-xs-6">
+        <md-select placeholder="验证方式" [(ngModel)]="identify" name="identify" class="column-full" [formControl]="identifyTerm">
+          <md-option *ngFor="let identify of identifies " [value]="identify">
+            {{identify}}
+          </md-option>
+        </md-select>
+      </div>
+    </div>
+    <div class="row pwd-group">
+      <div class="col-xs-7">
+        <md-input-container class="column-full">
+          <input mdInput placeholder="验证码" name="VerCode" [(ngModel)]="verCode" [formControl]="codeTerm" required>
+          <md-error>请输入验证码</md-error>
+        </md-input-container>
+      </div>
+      <button md-button class="btn-send" [disabled]="sendIsdisabled" (click)="sendCode()">{{sendBtnTitle}}</button>
+    </div>
+    <!--change password -->
+    <div *ngIf="isPassed">
+      <div class="row pwd-group">
+        <div class="col-xs-12">
+          <md-input-container class="column-full">
+            <input mdInput placeholder="新密码" name="NewPsw" [(ngModel)]="newPassword" type="password" required>
+            <md-error>请输入原密码</md-error>
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row pwd-group">
+        <div class="col-xs-12">
+          <md-input-container class="column-full">
+            <input mdInput placeholder="确认新密码" name="ConfirmNewPsw" type="password" required>
+            <md-error>请再次输入原密码</md-error>
+          </md-input-container>
+        </div>
+      </div>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions *ngIf="isPassed">
+    <button md-button md-dialog-close>取  消</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button md-button (click)="changePwd()" [md-dialog-close]="isCloseDialog" [disabled]="!form.form.valid">修  改</button>
+  </md-dialog-actions>
+</form>

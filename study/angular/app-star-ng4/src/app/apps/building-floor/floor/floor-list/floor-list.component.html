@@ -1,0 +1,48 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>
+        <md-checkbox (change)="onChooseAllFloors($event.checked)">&nbsp;&nbsp;选择</md-checkbox>
+      </th>
+      <th>编码</th>
+      <th>名称</th>
+      <th>层号</th>
+      <th>建筑层高(m)</th>
+      <th>结构层高(m)</th>
+      <th>建筑底标高(m)</th>
+      <th>结构底标高(m)</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let floor of floors">
+      <td class="checkboxTd">
+        <md-checkbox [(ngModel)]="floor.IsSelected"></md-checkbox>
+      </td>
+      <td>
+        {{floor.Code}}
+      </td>
+      <td>
+        {{floor.Name}}
+      </td>
+      <td>
+        {{floor.Index}}
+      </td>
+      <td>
+        {{floor.ArchitectureHeight}}
+      </td>
+      <td>
+        {{floor.StructureHeight}}
+      </td>
+      <td>
+        {{floor.ArchitectureElevation}}
+      </td>
+      <td>
+        {{floor.StructureElevation}}
+      </td>
+      <td>
+        {{floor.Description}}
+      </td>
+    </tr>
+  </tbody>
+</table>

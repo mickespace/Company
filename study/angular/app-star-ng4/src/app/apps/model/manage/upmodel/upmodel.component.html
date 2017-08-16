@@ -1,0 +1,19 @@
+<div class="header">
+  <h2 md-dialog-title>{{title}}</h2>
+  <button class="btn-close" md-icon-button [md-dialog-close]="isUpload" mdTooltip="关闭">
+  <md-icon>close</md-icon>
+</button></div>
+<md-dialog-content>
+  <p-fileUpload name="modelfile[]" multiple="multiple" customUpload="true" (uploadHandler)="onUpload($event)" accept=".ifc,.obj,.fbx,.3ds,.dxf,.stl,.dae,.blend"
+    maxFileSize="{{fileMaxSize}}" chooseLabel="选择模型文件" uploadLabel="上传" cancelLabel="取消" invalidFileSizeMessageSummary="{0}：文件大小不符合要求，"
+    invalidFileSizeMessageDetail="文件最大为{{fileMaxSize | filesizeTran}}" invalidFileTypeMessageSummary="{0}：文件类型有误，" invalidFileTypeMessageDetail="允许的文件格式为：{0}">
+  </p-fileUpload>
+  <div class="tip">
+    <p class="tip-ope"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> 温馨提示</p>
+    <p>1. 支持文件格式类型为：.ifc,.obj,.fbx,.3ds,.dxf,.stl,.dae,.blend</p>
+    <p>2. 单个模型文件大小为：{{fileMaxSize | filesizeTran}}</p>
+    <p>3. 最多可以上传{{fileMaxCount}}个文件</p>
+    <p>4. 支持文件拖拽选择的功能</p>
+    <p *ngIf="upType==0">5. 一次可以选择多个模型文件，如选择后再添加，请执行“取消”操作后，重新选择</p>
+  </div>
+</md-dialog-content>

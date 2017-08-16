@@ -1,0 +1,27 @@
+<h2 md-dialog-title>编辑选中栏信息</h2>
+<form #form="ngForm" (ngSubmit)="form.form.valid && onSave()" novalidate role="form">
+  <md-dialog-content>
+    <div class="form-item">
+      <md-input-container class="full-width">
+        <input mdInput placeholder="名称" [(ngModel)]="mfileData.Name" name="Name" required>
+        <md-error>请输入名称</md-error>
+      </md-input-container>
+    </div>
+    <div *ngIf="isModel" class="form-item">
+      <md-select class="full-width" placeholder="标高类型" [(ngModel)]="mfileData.ElevationSystem" name="ElevationSystem">
+        <md-option *ngFor="let elevatoin of ElevationSource " [value]="elevatoin.value">
+          {{elevatoin.viewValue}}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="form-item">
+      <md-input-container class="full-width">
+        <textarea mdInput placeholder="描述" [(ngModel)]="mfileData.Description" name="Description"></textarea>
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button type="submit" [disabled]="!form.form.valid">保存</button>
+    <button md-button md-dialog-close="true">关闭</button>
+  </md-dialog-actions>
+</form>

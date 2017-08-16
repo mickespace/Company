@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row row-title">
+    <div class="col-xs-12 pro-title">
+      <div class="title">我的项目</div>
+      <div class="tip" *ngIf="proList">
+        <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i> 拥有<strong>{{proList.length}}</strong>个项目
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 pro-item" *ngFor="let pro of proList" (click)="onSelect($event,pro)">
+      <img class="pro-img" src="{{pro.Icon}}">
+      <div class="pro-name">
+        {{pro.Name}}
+      </div>
+    </div>
+  </div>
+</div>

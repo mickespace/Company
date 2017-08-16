@@ -1,0 +1,27 @@
+<h2 md-dialog-title>{{bindTitle}}</h2>
+<form #form="ngForm" (ngSubmit)="form.form.valid" novalidate role="form">
+  <md-dialog-content>
+    <div class="row bind-group">
+      <div class="col-xs-12">
+        <md-input-container class="column-full">
+          <input mdInput placeholder="{{bindTitle}}" name="VerCode" [(ngModel)]="bindStr" [formControl]="bindStrTerm" required>
+          <md-error>请输入{{bindTitle}}</md-error>
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row bind-group">
+      <div class="col-xs-7">
+        <md-input-container class="column-full">
+          <input mdInput placeholder="验证码" name="VerCode" [(ngModel)]="verCode" required>
+          <md-error>请输入验证码</md-error>
+        </md-input-container>
+      </div>
+      <button md-button class="btn-send" [disabled]="sendIsdisabled" (click)="sendCode()">{{sendBtnTitle}}</button>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button md-dialog-close>取  消</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button md-button (click)="binding()" [md-dialog-close]="false" [disabled]="!form.form.valid">绑  定</button>
+  </md-dialog-actions>
+</form>

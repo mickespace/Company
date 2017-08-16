@@ -1,0 +1,136 @@
+<!-- 顶部导航 -->
+<div class="navbar main-nav" role="navigation">
+  <div class=".container-fluid">
+    <div class="navbar-header">
+      <button *ngIf="isLogined" #button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand navbar-brand-my" routerLink="home">BIM-STAR</a>
+    </div>
+    <nav *ngIf="isLogined" class="collapse navbar-collapse navbar-responsive-collapse" aria-expanded="false">
+      <ul class="nav navbar-nav">
+        <li>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentProject.Name}} <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-project">
+            <li class="li-project" *ngFor="let project of navProjects" (click)="switchProject(project)">
+              <div class="row">
+                <div class="col-xs-5">
+                  <img class="li-project-img" src="{{project.Icon}}">
+                </div>
+                <div class="col-xs-7 li-project-desc">
+                  <div class="pro-name">{{project.Name}} </div>
+                  <h5 *ngIf="project.IsCreator" class="li-project-owner"><i class="fa fa-user-o" aria-hidden="true"></i> 本人创建</h5>
+                  <h5 *ngIf="!project.IsCreator" class="li-project-owner"><i class="fa fa-handshake-o" aria-hidden="true"></i> 参与</h5>
+                  <div class="pro-createDate">{{project.CreatedDate | date:"yyyy-MM-dd HH:mm"}} 创建</div>
+                </div>
+              </div>
+            </li>
+            <li class="li-more" *ngIf="ownProjects.length > 4">
+              <span class="more-pro" routerLink="prolist">
+              <i class="fa fa-map-signs fa-lg" aria-hidden="true"></i> 更多项目
+            </span>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <button class="btn-create-project" md-button (click)="onCreateProject()" disabled="{{!canCreate}}">创建项目</button>
+            </li>
+            <li>
+              <span class="tip-create"><i class="fa fa-info" aria-hidden="true"></i> 您当前可创建 {{canCreateCount}} 个项目</span>
+            </li>
+          </ul>
+        </li>
+        <li *ngFor="let app of navRouteList" routerLinkActive="active">
+          <a routerLink="{{app.appName}}">{{app.appDisplay}}</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="project">项目</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!--主题颜色-->
+        <li>
+          <button md-icon-button mdTooltip="换个主题" (click)="changeTheme()">
+            <md-icon>format_color_fill</md-icon>
+          </button>
+          <!-- <md-menu #tmenu="mdMenu">
+            <md-grid-list cols="2" rowHeight="1:1">
+              <md-grid-tile>
+                <button md-menu-item>default</button>
+              </md-grid-tile>
+              <md-grid-tile>2</md-grid-tile>
+              <md-grid-tile>3</md-grid-tile>
+            </md-grid-list>
+          </md-menu> -->
+        </li>
+        <!--创建-->
+        <li>
+          <button md-icon-button [mdMenuTriggerFor]="cmenu" mdTooltip="创建一些东西">
+            <md-icon>add_circle_outline</md-icon>
+          </button>
+          <md-menu #cmenu="mdMenu">
+            <button md-menu-item disabled>
+              <md-icon>flag</md-icon>
+              <span>创建任务</span>
+            </button>
+            <button md-menu-item disabled>
+              <md-icon>note_add</md-icon>
+              <span>创建文件</span>
+            </button>
+            <button md-menu-item disabled>
+              <md-icon>playlist_add</md-icon>
+              <span>创建计划</span>
+            </button>
+          </md-menu>
+        </li>
+        <!--设置-->
+        <li>
+          <button md-icon-button (click)="showDialog()" mdTooltip="设置">
+            <md-icon>settings</md-icon>
+          </button>
+        </li>
+        <li class="div-line visible-lg-inline"></li>
+        <!--下拉导航-->
+        <li>
+          <button md-icon-button [mdMenuTriggerFor]="menu" mdTooltip="更多">
+            <img class="user-img" src="{{currentUser.Avatar}}"><md-icon>more_vert</md-icon>
+          </button>
+          <md-menu #menu="mdMenu">
+            <button md-menu-item *ngFor="let app of downRouteList" routerLink="{{app.appName}}">
+              <md-icon>{{app.appIcon}}</md-icon>
+              <span>{{app.appDisplay}}</span>
+            </button>
+            <button md-menu-item routerLink="user">
+                <md-icon>person_outline</md-icon>
+                <span>用户中心</span>
+            </button>
+            <button md-menu-item disabled>
+                <md-icon>perm_data_setting</md-icon>
+                <span>偏好设置</span>
+            </button>
+            <button md-menu-item disabled>
+                <md-icon>trending_up</md-icon>
+                <span>我要升级</span>
+            </button>
+            <button md-menu-item disabled>
+                <md-icon>widgets</md-icon>
+                <span>下载应用</span>
+            </button>
+            <button md-menu-item disabled>
+                <md-icon>filter_drama</md-icon>
+                <span>进入社区</span>
+            </button>
+            <button md-menu-item (click)="doLogout()">
+                <md-icon>power_settings_new</md-icon>
+                <span>退出账号</span>
+            </button>
+          </md-menu>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- 主体内容区域 -->
+<router-outlet></router-outlet>
