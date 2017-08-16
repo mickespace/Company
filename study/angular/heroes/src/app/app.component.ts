@@ -1,19 +1,11 @@
-import { Component } from '@angular/core';
-
+import { NgModule, Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 export class Hero {
   id: number;
   name: string;
 }
-const HEROES: Hero[] = [{ id: 11, name: 'Mr. Nice' },
-{ id: 12, name: 'Narco' },
-{ id: 13, name: 'Bombasto' },
-{ id: 14, name: 'Celeritas' },
-{ id: 15, name: 'Magneta' },
-{ id: 16, name: 'RubberMan' },
-{ id: 17, name: 'Dynama' },
-{ id: 18, name: 'Dr IQ' },
-{ id: 19, name: 'Magma' },
-{ id: 20, name: 'Tornado' }]
 
 @Component({
   selector: 'app-root',
@@ -21,7 +13,7 @@ const HEROES: Hero[] = [{ id: 11, name: 'Mr. Nice' },
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor() {
 
   };
@@ -30,6 +22,7 @@ export class AppComponent {
     id: 1,
     name: "windstorm"
   };
+  isbusy: true;
   heroes: [{ id: 11, name: 'Mr. Nice' },
     { id: 12, name: 'Narco' },
     { id: 13, name: 'Bombasto' },
@@ -40,7 +33,7 @@ export class AppComponent {
     { id: 18, name: 'Dr IQ' },
     { id: 19, name: 'Magma' },
     { id: 20, name: 'Tornado' }];
-  ngOninit() {
-    console.log('ngOnInit被Angular调用');
+  ngOnInit() {
+    alert("234234");
   }
 }
