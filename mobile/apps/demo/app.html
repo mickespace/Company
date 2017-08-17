@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>入口</title>
+    <script src="Mango.js"></script>
+</head>
+
+<body>
+    <script>
+        var _plugId;
+
+        function install() {
+            mgLog.Info(mgThis.AppInfo.Key);
+            mgSlot.PushPlug({
+                Name: "项目概况",
+                SlotName: "ProjectInfoSlot",
+                Data: {
+                    Key: "projectInfo",
+                    Page: "projectInfo.html"
+                },
+                Order: 1,
+            }, function (plugId) {
+                _plugId = plugId;
+            });
+        }
+
+        function uninstall() {
+            mgSlot.PullPlug(_plugId);
+        }
+
+        function open() {
+            mgNavi.Go("projectInfo.html");
+            // mgService.Invoke("OpenProjectInfo", {
+            //     Key: "asdfsdf"
+            // });
+        }
+    </script>
+</body>

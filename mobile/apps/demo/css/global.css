@@ -1,0 +1,27 @@
+body {
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: #505050;
+}
+
+.bs_busy {
+    width: 200px;
+    height: 200px;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}

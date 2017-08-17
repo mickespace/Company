@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/global.css">
+    <script src="js/global.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/Mango.js"></script>
+    <link rel="stylesheet" href="effect.css">
+    <title>效果图</title>
+</head>
+
+<body>
+    <div id="app" name="app">
+        <div class="content">
+            <img class="img-responsive" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502996053814&di=7f64d1df2a47814dd7f3af650a9cb774&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fac6eddc451da81cbecd84bb05566d01609243195.jpg">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="float:left;" v-for="item in EffectImgs">
+                    <div class="effect_item">
+                        <img class="img-responsive" v-bind:src="item.Thumbnail">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <img class="bs_busy" v-show="IsBusy" src="Assets/isbusy.gif">
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="effect.js"></script>
+</body>
+
+</html>
