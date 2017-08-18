@@ -4,6 +4,9 @@
 var mgThis = function () {};
 //宿主加载后，会设置该属性
 mgThis.AppInfo = null;
+mgThis.GetResPath = function (name) {
+    return mgThis.AppInfo.RootDirectory + '/' + name;
+};
 
 //***************************************************************************************************
 //mgLog
@@ -225,7 +228,7 @@ mgService.Invoke = function (serviceName, param, callback) {
         NativeFunc("mgService.Invoke", {
             appKey: mgThis.AppInfo.Key,
             serviceName: serviceName,
-            param: param,
+            param: JSON.stringify(param),
         }, callback);
     });
 };
@@ -240,7 +243,7 @@ mgService.InvokeAsync = function (serviceName, param, callback) {
         NativeFunc("mgService.InvokeAsync", {
             appKey: mgThis.AppInfo.Key,
             serviceName: serviceName,
-            param: param,
+            param: JSON.stringify(param),
         }, callback);
     });
 };

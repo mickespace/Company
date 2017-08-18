@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>入口</title>
-    <script src="Mango.js"></script>
+    <script src="js/Mango.js"></script>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
                 SlotName: "ProjectInfoSlot",
                 Data: {
                     Key: "projectInfo",
-                    Page: "projectInfo.html"
+                    Page: mgThis.GetResPath("projectInfo.html"),
                 },
                 Order: 1,
             }, function (plugId) {
@@ -30,9 +30,10 @@
         }
 
         function open() {
-            mgNavi.Go("projectInfo.html");
-            // mgService.Invoke("OpenProjectInfo", {
-            //     Key: "asdfsdf"
+            mgNavi.Go("schedule.html");
+            // mgService.Invoke('OpenProjectInfoPage', null, function (result) {
+            //     if (!result.IsOk)
+            //         alert(result.Message);
             // });
         }
     </script>

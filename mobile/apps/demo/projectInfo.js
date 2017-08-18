@@ -70,29 +70,46 @@ var app = new Vue({
     },
     methods: {
         LoadData: function () {
-            app.IsBusy = true;
-            setTimeout(function () {
-                app.IsBusy = false;
-            }, 4000);
-            // $.ajax({
-            //     type: 'get',
-            //     timeout: 10000,
-            //     url: "https://www.baidu.com",
-            //     data: null,
-            //     dataType: 'json',
-            //     success: function (res) {
-            //         app.IsBusy = false;
-            //         if (!res.IsOk) {
 
-            //             return;
-            //         }
-            //         app.Login();
-            //     },
-            //     error: function (res) {
+            //设置title       
+            try {
+                mgTip.Show("加载数据");
+                mgContext.GetProjectId(function (projectId) {
+                    var urlData = {
+                        ProjectId: projectId
+                    };
+                    var urlParam = HandleParams(urlData);
+                    mgWeb.GetUrl("v1/project/property/info", urlParam, function (res) {
+                        if (!res.IsOk) {
+                            mgLog.Error("读取概况信息错误", "");
+                            return;
+                        }
+                    });
+                })
+            } catch (error) {} finally {
+                mgTip.Close();
+            }
+
+            // $.ajax({
+            //     type: "get",
+            //     async: false,
+            //     url: "http://weather.123.duba.net/static/weather_info/101121301.html",
+            //     dataType: "jsonp",
+            //     jsonp: "callbackparam", //服务端用于接收callback调用的function名的参数
+            //     jsonpCallback: "weather_callback", //callback的function名称
+            //     success: function (json) {
+            //         //  console.log(json);              //浏览器调试的时候用
             //         app.IsBusy = false;
-            //         return;
+            //         alert(json.weatherinfo.city);
+            //         alert(json.weatherinfo.week);
+            //         alert(json.update_time);
+            //     },
+            //     error: function () {
+            //         app.IsBusy = false;
+            //         alert('fail');
             //     }
             // });
+
         }
     }
 })

@@ -1,0 +1,56 @@
+.effect_img_show {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 101;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+}
+
+.effect_img_show img {
+    width: 100%;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 101;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.effect_content {
+    background-color: #eee;
+}
+
+.effect_item {
+    padding: 10px 10px 0px 10px;
+    border: 1px solid #ccc;
+    margin: 10px 10px 0px 10px;
+    background-color: white;
+}
+
+.effect_item_img {
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.effect_item_img img {
+    width: 100%;
+    margin: auto
+}
+
+.effect_item_title {
+    padding: 5px 2px 0px 2px;
+}
+
+.effect_item_description {
+    padding: 10px 2px;
+}

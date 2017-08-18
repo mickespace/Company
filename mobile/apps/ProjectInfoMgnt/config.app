@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <App Key="5AC49682-46F5-47D0-8267-EFBA70312B34"
-     Name="项目概况1"
+     Name="项目概况"
      FileName="app.html"
      Icon="Assets/logo.png"
      Description="项目概况内显示了项目的基本信息：包括基本工程描述、建成的效果图和施工时的进度图。用户可通过项目概况应用插件，编辑项目的基本概况，实现其他用户实时查看跟进了解项目整体进度情况的效果。"

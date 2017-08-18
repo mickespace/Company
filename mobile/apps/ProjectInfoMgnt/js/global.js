@@ -2,7 +2,7 @@
 function HandleParams(data) {
     var params = "";
     for (var key in data) {
-        params = parparamsamUrl + key + "=" + data[key] + "&";
+        params = params + key + "=" + data[key] + "&";
     }
     return params;
 }
