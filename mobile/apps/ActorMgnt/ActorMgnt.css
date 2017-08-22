@@ -1,0 +1,9 @@
+.property_item {
+    padding: 10px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.property_img {
+    border-bottom: 1px solid #ccc;
+    max-height: 500px;
+}
