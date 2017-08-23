@@ -15,21 +15,25 @@
     <title>人员组织</title>
     <script type="text/x-template" id="item-template">
         <li class="org_item">
-            <div class="org_item_container" @click="toggle" @dblclick="changeType">
+            <div class="org_item_container" @dblclick="changeType">
                 <div class="container">
-                    <div class="pull-left" v-if="isHas">
-                        <img class="org_item_img" v-show="!open" src="Assets/selected_default.svg">
-                        <img class="org_item_img" v-show="open" src="Assets/selected_open.svg">
-                    </div>
-                    <div class="pull-left" v-if="!isHas">
-                        <div class="org_item_img"></div>
-                    </div>
-                    <div class="pull-left">
-                        <div class="org_item_title" v-html="model.Name">
+                    <div @click="toggle">
+                        <div class="pull-left" v-if="isHas">
+                            <img class="org_item_img" v-show="!open" src="Assets/selected_default.svg">
+                            <img class="org_item_img" v-show="open" src="Assets/selected_open.svg">
+                        </div>
+                        <div class="pull-left" v-if="!isHas">
+                            <div class="org_item_img"></div>
+                        </div>
+                        <div class="pull-left">
+                            <div class="org_item_title" v-html="NameCount">
+                            </div>
                         </div>
                     </div>
-                    <div class="pull-right">
-                        <img class="org_item_tip" src="Assets/item_tip.svg">
+
+                    <div class="pull-right" @click="OrgDetail(model)">
+                        <span class="org_item_detail">详细</span>
+
                     </div>
                 </div>
             </div>
@@ -69,7 +73,7 @@
                 <!--组织-->
                 <div class="org">
                     <ul>
-                        <item class="item" :model="treeData">
+                        <item class="item" :model="OrgTree">
                         </item>
                     </ul>
                 </div>

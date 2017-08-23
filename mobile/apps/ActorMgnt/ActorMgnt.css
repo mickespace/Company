@@ -1,6 +1,7 @@
 .actor_header {
     text-align: center;
     background-color: #eee;
+    border-radius: 0px;
     font-weight: bold;
 }
 
@@ -71,12 +72,18 @@
 
 .org_item_title {
     margin-left: 10px;
+    width: 100%;
 }
 
 .org_item_tip {
     line-height: 40px;
     height: 20px;
     opacity: 0.4;
+}
+
+.org_item_detail {
+    padding-right: 20px;
+    color: #337AB7;
 }
 
 

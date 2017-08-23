@@ -57,8 +57,10 @@ Vue.component('item', {
             return this.model.Children &&
                 this.model.Children.length
         },
-        Count: function () {
-            return this.model.Children.length;
+        NameCount: function () {
+            if (this.model.Children.length > 0)
+                return this.model.Name + " (" + this.model.Children.length + ")";
+            return this.model.Name;
         }
     },
     methods: {
@@ -73,6 +75,9 @@ Vue.component('item', {
                 this.addChild()
                 this.open = true
             }
+        },
+        OrgDetail: function (org) {
+            alert(org.Name);
         },
         addChild: function () {
             this.model.Children.push({
@@ -123,14 +128,8 @@ var app = new Vue({
                 "Avatar": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503480227216&di=fea9489f242255b2409477c574b8cdee&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D763968628%2C2435880126%26fm%3D214%26gp%3D0.jpg" //用户头像
             }
         }, ],
-        OrgTree: [{
-            "_id": "ObjectId", //组织Id
-            "ProjectId": "ObjectId", //项目Id
-            "ParentId": "ObjectId", //父组织Id
-            Name: "深圳筑星科技有限公司", //组织名称
-            "Description": "组织描述", //组织描述
-            "CreatorId": "ObjectId", //创建者Id
-            "CreatedDate": " /Date/", //创建时间
+        OrgTree: {
+            Name: "傻逼吗",
             Children: [{
                 "_id": "ObjectId", //组织Id
                 "ProjectId": "ObjectId", //项目Id
@@ -139,17 +138,17 @@ var app = new Vue({
                 "Description": "组织描述", //组织描述
                 "CreatorId": "ObjectId", //创建者Id
                 "CreatedDate": " /Date/", //创建时间
-                Children: []
-            }]
-        }, {
-            "_id": "ObjectId", //组织Id
-            "ProjectId": "ObjectId", //项目Id
-            "ParentId": "ObjectId", //父组织Id
-            Name: "深圳筑星科技有限公司", //组织名称
-            "Description": "组织描述", //组织描述
-            "CreatorId": "ObjectId", //创建者Id
-            "CreatedDate": " /Date/", //创建时间
-            Children: [{
+                Children: [{
+                    "_id": "ObjectId", //组织Id
+                    "ProjectId": "ObjectId", //项目Id
+                    "ParentId": "ObjectId", //父组织Id
+                    Name: "深圳筑星科技有限公司", //组织名称
+                    "Description": "组织描述", //组织描述
+                    "CreatorId": "ObjectId", //创建者Id
+                    "CreatedDate": " /Date/", //创建时间
+                    Children: []
+                }]
+            }, {
                 "_id": "ObjectId", //组织Id
                 "ProjectId": "ObjectId", //项目Id
                 "ParentId": "ObjectId", //父组织Id
@@ -189,20 +188,20 @@ var app = new Vue({
                                 "Description": "组织描述", //组织描述
                                 "CreatorId": "ObjectId", //创建者Id
                                 "CreatedDate": " /Date/", //创建时间
-                                Children: []
+                                Children: [{
+                                    "_id": "ObjectId", //组织Id
+                                    "ProjectId": "ObjectId", //项目Id
+                                    "ParentId": "ObjectId", //父组织Id
+                                    Name: "深圳筑星科技有限公司", //组织名称
+                                    "Description": "组织描述", //组织描述
+                                    "CreatorId": "ObjectId", //创建者Id
+                                    "CreatedDate": " /Date/", //创建时间
+                                    Children: []
+                                }]
                             }]
                         }]
                     }]
-                }]
-            }, {
-                "_id": "ObjectId", //组织Id
-                "ProjectId": "ObjectId", //项目Id
-                "ParentId": "ObjectId", //父组织Id
-                Name: "深圳筑星科技有限公司", //组织名称
-                "Description": "组织描述", //组织描述
-                "CreatorId": "ObjectId", //创建者Id
-                "CreatedDate": " /Date/", //创建时间
-                Children: [{
+                }, {
                     "_id": "ObjectId", //组织Id
                     "ProjectId": "ObjectId", //项目Id
                     "ParentId": "ObjectId", //父组织Id
@@ -226,12 +225,21 @@ var app = new Vue({
                             "Description": "组织描述", //组织描述
                             "CreatorId": "ObjectId", //创建者Id
                             "CreatedDate": " /Date/", //创建时间
-                            Children: []
+                            Children: [{
+                                "_id": "ObjectId", //组织Id
+                                "ProjectId": "ObjectId", //项目Id
+                                "ParentId": "ObjectId", //父组织Id
+                                Name: "深圳筑星科技有限公司", //组织名称
+                                "Description": "组织描述", //组织描述
+                                "CreatorId": "ObjectId", //创建者Id
+                                "CreatedDate": " /Date/", //创建时间
+                                Children: []
+                            }]
                         }]
                     }]
                 }]
             }]
-        }],
+        },
         RoleList: [{
             "_id": "ObjectId", //角色Id
             Name: "管理员", //角色名称
@@ -278,9 +286,7 @@ var app = new Vue({
         UserDetail: function (user) {
             alert(user.UserInfo.RealName);
         },
-        OrgDetail: function (org) {
-            alert(org.Name);
-        },
+
         RoleDetail: function (role) {
             alert(role.Name);
         }

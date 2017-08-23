@@ -1,0 +1,55 @@
+.userDetail {}
+
+.userDetail_tip {
+    height: 40px;
+    line-height: 40px;
+    background-color: #eee;
+    position: static;
+    float: none;
+}
+
+.user_portrait {
+    height: 80px;
+    line-height: 80px;
+    background-color: White;
+    border-bottom: 1px solid #ccc;
+}
+
+.user_portrait_avatar {
+    line-height: 80px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+.user_info {
+    height: 40px;
+    line-height: 40px;
+    background-color: White;
+    border-bottom: 1px solid #ccc;
+}
+
+.user_info_avatar {
+    height: 20px;
+    line-height: 40px;
+    margin-right: 20px;
+}
+
+.user_info_edit {
+    height: 30px;
+    padding: 5px;
+    line-height: 40px;
+}
+
+.org_info {
+    height: 40px;
+    line-height: 40px;
+    background-color: White;
+    border-bottom: 1px solid #ccc;
+}
+
+.role_info {
+    height: 40px;
+    line-height: 40px;
+    background-color: White;
+    border-bottom: 1px solid #ccc;
+}
