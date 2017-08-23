@@ -1,9 +1,117 @@
-.property_item {
-    padding: 10px 10px;
+.actor_header {
+    text-align: center;
+    background-color: #eee;
+    font-weight: bold;
+}
+
+
+/*人员*/
+
+.member {
+    border-top: 1px solid #eee;
+}
+
+.member_item {
+    height: 50px;
     border-bottom: 1px solid #ccc;
 }
 
-.property_img {
+.member_item_img {
+    margin: 5px 0px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+.member_item_title {
+    margin: 5px 10px;
+    line-height: 40px;
+    opacity: 0.8
+}
+
+.member_item_tip {
+    margin-top: 12px;
+    height: 20px;
+    opacity: 0.4;
+}
+
+
+/*组织*/
+
+.org {
+    border-top: 1px solid #eee;
+}
+
+.org ul {
+    text-decoration: none;
+    width: 100%;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.org_item {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.org_item_container {
+    height: 40px;
+    line-height: 40px;
     border-bottom: 1px solid #ccc;
-    max-height: 500px;
+}
+
+.org_item_img {
+    line-height: 40px;
+    height: 10px;
+    width: 10px;
+}
+
+.org_item_title {
+    margin-left: 10px;
+}
+
+.org_item_tip {
+    line-height: 40px;
+    height: 20px;
+    opacity: 0.4;
+}
+
+
+/*角色*/
+
+.role {
+    border-top: 1px solid #eee;
+}
+
+.role_item {
+    height: 50px;
+    float: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.role_item_img {
+    margin: 12px 0px;
+    height: 26px;
+}
+
+.role_item_title {
+    margin: 0px 0px 0px 10px;
+    line-height: 30px;
+    opacity: 0.8
+}
+
+.role_item_detail {
+    margin: 0px 0px 0px 10px;
+    line-height: 20px;
+    font-size: 10px;
+    opacity: 0.6
+}
+
+.role_item_tip {
+    margin-top: 12px;
+    height: 20px;
+    opacity: 0.4;
 }
