@@ -743,7 +743,9 @@ https://api.xxx.com/v1/user/apps
         "Name": "string", //应用名称
         "Icon":"string"//应用图标url
       	"AppType":1, //应用类型
-        "Info": [{ //购买信息
+        "Price":0.0,  //应用价格
+        "Products": [{ //购买信息
+            "ProductId":"projectId", //产品id
             "Platform": 2, //应用所属平台：2-Web;4-PC;8-iOS;16-Android
             "Version": "string"
         }, {
@@ -832,7 +834,8 @@ https://api.xxx.com/v1/user/project_apps
     "Message": "string",//返回信息
     "Data": [{
         "AppKey": "GUID", //应用Guid标识
-        "Name": "string", //应用名称
+        "Platform": 0, //平台类型
+        "DisplayName": "string", //应用名称
         "Version": "string" //当前版本号
     }, {
         "...": ""

@@ -144,10 +144,17 @@ https://api.xxx.com/v1/app/info
 
 > **请求参数：**
 
-| 参数          | 必选     | 类型         | 说明                   |
-| ----------- | ------ | ---------- | -------------------- |
-| `UserToken` | `true` | `string`   | 用户令牌（包含用户Id及访问权限等信息） |
-| `Id`        | `true` | `ObjectId` | 应用Id                 |
+| 参数          | 必选      | 类型         | 说明                   |
+| ----------- | ------- | ---------- | -------------------- |
+| `UserToken` | `true`  | `string`   | 用户令牌（包含用户Id及访问权限等信息） |
+| `Id`        | `true`  | `ObjectId` | 应用Id                 |
+| `Map`       | `false` | `json`     | 返回的属性映射数组            |
+
+`Map`的格式为：
+
+```json
+["PropertyName1","..."]   //返回的属性映射数组，默认为空数组，表示返回所有属性
+```
 
 > **返回结果**
 
@@ -502,6 +509,7 @@ https://api.xxx.com/v1/product/submit
         "Platform": 2, //产品所属平台：2-Web;4-PC;8-iOS;16-Android
         "SubmitDate": "/Date/", //产品提交日期
         "FileId": "ObjectId", //产品安装包文件的Id
+        "FileSize": 0, //产品安装包大小
         "DownloadCount": 0, //产品下载次数
         "Version": 0, //产品版本号
         "DisplayName": "string", //产品显示名称
@@ -563,11 +571,11 @@ https://api.xxx.com/v1/product/publish
 
 ## 开发者-解压包文件
 
-`product/desencrypt`
+`product/package_info`
 
 > **URL**
 
-https://api.xxx.com/v1/product/publish
+https://api.xxx.com/v1/product/package_info
 
 > **API级别**
 
@@ -579,9 +587,10 @@ https://api.xxx.com/v1/product/publish
 
 > **请求参数：**
 
-| 参数      | 必选     | 类型                    | 说明      |
-| ------- | ------ | --------------------- | ------- |
-| ` File` | `true` | `multipart/form-data` | 插件的打包文件 |
+| 参数          | 必选     | 类型                    | 说明                   |
+| ----------- | ------ | --------------------- | -------------------- |
+| `UserToken` | `true` | `string`              | 用户令牌（包含用户Id及访问权限等信息） |
+| ` File`     | `true` | `multipart/form-data` | 插件的打包文件              |
 
 > **返回结果**
 
@@ -606,13 +615,13 @@ https://api.xxx.com/v1/product/publish
 
 
 
-## 用户-获取应用商店的所有最新的产品（筛选、分页、排序、映射）
+## 使用者-获取应用商店可见的所有应用（筛选、分页、排序、映射）
 
-`product/list`
+`app/store/list`
 
 > **URL**
 
-https://api.xxx.com/v1/product/list
+https://api.xxx.com/v1/app/store/list
 
 > **API级别**
 
@@ -624,10 +633,10 @@ https://api.xxx.com/v1/product/list
 
 > **请求参数：**
 
-| 参数           | 必选      | 类型     | 说明                               |
-| ------------ | ------- | ------ | -------------------------------- |
-| `UserToken`  | `false` | `json` | 用户令牌（包含用户Id及访问权限等信息），可以为空，表示匿名用户 |
-| `ListParams` | `false` | `json` | 集合的筛选、分页、排序、映射参数                 |
+| 参数           | 必选      | 类型       | 说明                               |
+| ------------ | ------- | -------- | -------------------------------- |
+| `UserToken`  | `false` | `string` | 用户令牌（包含用户Id及访问权限等信息），可以为空，表示匿名用户 |
+| `ListParams` | `false` | `json`   | 集合的筛选、分页、排序、映射参数                 |
 
 `ListParams`的格式为：
 
@@ -657,24 +666,22 @@ https://api.xxx.com/v1/product/list
     "Message": "string", //返回的信息
     "Data": [{
         "_id": "ObjectId", //Id
-        "AppKey": "Guid", //所属应用的Key
-        "AppId": "ObjectId", //所属应用的Id
-        "AppType": 0, //产品类型：0-普通插件; 1-基础插件; 2-主程序；11-表单；21-Revit插件
-        "Developer": "", //应用的开发商
-      	"Price": 0.0, //应用价格
-        "Platform": 2, //产品所属平台：2-Web;4-PC;8-iOS;16-Android
-        "DownloadCount": 0, //产品的下载次数，包括老版本的下载次数
-        "Star": 5.0, //所有版本的星级的平均值
-        "Version": 0, //产品版本号
-        "DisplayName": "string", //产品显示名称
-        "DisplayIcon": "url", //产品显示图标 存objectId,返回给用户时给Url
-        "Description": "string", //产品描述
-        "State": 0, //产品状态：0-未审核；1-审核未通过；2-审核通过未发布；3-已发布
-        "Distro": 0, // 发行版：0-测试版；1-预览版；2-稳定版
-        "ApprovedDate": "/Date/", //产品审核通过时的日期
-        "PublishDate": "/Date/", //产品的发布日期
+        "Key": "GUID", //应用唯一标识
+        "Name": "string", //应用名称
+        "Developer": "string", //应用开发商
+        "Description": "string", //应用描述
+        "Type": 0, //应用类型：0-普通插件; 1-基础插件; 2-主程序；11-表单；21-Revit插件
+        "SupportedPlatform": 2, //应用支持的平台：2-Web;4-PC;8-iOS;16-Android 注意：值为支持平台的和，如6：web(2),PC(4)
+        "Icon": "ObjectId", //应用图标 存objectId,返回给用户时给Url
+        "Price": 0.0, //应用价格
+        "DownloadCount": 0, //应用总的下载次数
+        "AvgStar": 0.0, // 应用平均星级
+        "AllStars": 0, //总的星级
+        "MinPackageSize": 0, //最小安装包的大小
+        "MaxPackageSize": 0, //最大安装包的大小
+        "Owned": false //是否已拥有
     }, {
-        "...": "..."
+        "...": ""
     }]
 }
 ```
@@ -683,7 +690,64 @@ https://api.xxx.com/v1/product/list
 
 如果`PageIndex`和`PageCount`都为0，则表示不分页；如果搜索表达式为空，则表示不搜索；`Map`表示需要结果中需要返回的属性，表达式为`["PropertyName1","PropertyName2"]`表示只包含`PropertyName1`和`PropertyName2`的属性，或者 `["^PropertyName1","^PropertyName2"]`表示不包含`PropertyName1`和`PropertyName2`的所有属性。`Sort`表示按指定的属性升序或降序排列。
 
-## 用户-获取产品Id
+## 使用者-获取应用商店中应用的详细信息
+
+`app/store/info`
+
+> **URL**
+
+https://api.xxx.com/v1/app/store/info
+
+> **API级别**
+
+5
+
+> **HTTP请求方式**
+
+`GET`
+
+> **请求参数：**
+
+| 参数          | 必选      | 类型         | 说明                               |
+| ----------- | ------- | ---------- | -------------------------------- |
+| `Id`        | `true`  | `ObjectId` | 应用Id                             |
+| `UserToken` | `false` | `string`   | 用户令牌（包含用户Id及访问权限等信息），可以为空，表示匿名用户 |
+
+> **返回结果**
+
+```json
+{
+    "IsOk": true, //是否成功
+    "Code": 200, //返回码
+    "Message": "string", //返回的信息
+    "Data": {
+        "_id": "ObjectId", //Id
+        "Key": "GUID", //应用唯一标识
+        "Name": "string", //应用名称
+        "Developer": "string", //应用开发商
+        "Description": "string", //应用描述
+        "Type": 0, //应用类型：0-普通插件; 1-基础插件; 2-主程序；3-运维插件；4-施工插件；11-表单；21-Revit插件
+        "SupportedPlatform": 2, //应用支持的平台：2-Web;4-PC;8-iOS;16-Android 注意：值为支持平台的和，如6：web(2),PC(4)
+        "Icon": "ObjectId", //应用图标 存objectId,返回给用户时给Url
+        "Price": 0.0, //应用价格
+        "DownloadCount": 0, //应用总的下载次数
+        "AvgStar": 0.0, // 应用平均星级
+        "AllStars": 0, //总的星级
+        "CommentCount": 0, //评论总数
+        "MinPackageSize": 0, //最小安装包的大小
+        "MaxPackageSize": 0, //最大安装包的大小
+        "Owned": false //是否已拥有
+    }
+}
+```
+
+> **注意事项**
+
+`SupportedPlatform` 值为支持平台的和，如6：`web`,`PC`。
+
+`Map`表示需要结果中需要返回的属性，表达式为`["PropertyName1","PropertyName2"]`表示只包含`PropertyName1`和`PropertyName2`的属性，或者 `["^PropertyName1","^PropertyName2"]`表示不包含`PropertyName1`和`PropertyName2`的所有属性。
+
+## 使用者-获取产品Id
 
 `product/id`
 
@@ -724,7 +788,7 @@ https://api.xxx.com/v1/product/id
 
 无
 
-## 用户-获取产品的所有版本号
+## 使用者-获取产品的所有版本号
 
 `product/versions`
 
@@ -763,7 +827,7 @@ https://api.xxx.com/v1/product/versions
 
 无
 
-## 用户-设置产品的稳定性
+## 使用者-设置产品的稳定性
 
 `product/set_distro`
 
@@ -802,9 +866,7 @@ https://api.xxx.com/v1/product/set_distro
 
 只有内部用户才能设置产品稳定性
 
-
-
-## 用户-获取产品详细信息（映射）
+## 使用者-获取指定产品的详细信息
 
 `product/info`
 
@@ -822,17 +884,9 @@ https://api.xxx.com/v1/product/info
 
 > **请求参数：**
 
-| 参数          | 必选      | 类型         | 说明                               |
-| ----------- | ------- | ---------- | -------------------------------- |
-| `UserToken` | `false` | `json`     | 用户令牌（包含用户Id及访问权限等信息），可以为空，表示匿名用户 |
-| `Id`        | `true`  | `ObjectId` | 产品Id                             |
-| `Map`       | `false` | `json`     | 返回的属性映射数组                        |
-
-`Map`的格式为：
-
-```json
-["PropertyName1","..."]   //返回的属性映射数组，默认为空数组，表示返回所有属性
-```
+| 参数   | 必选     | 类型         | 说明   |
+| ---- | ------ | ---------- | ---- |
+| `Id` | `true` | `ObjectId` | 产品Id |
 
 > **返回结果**
 
@@ -846,30 +900,16 @@ https://api.xxx.com/v1/product/info
         "AppKey": "Guid", //所属应用的Key
         "AppId": "ObjectId", //所属应用的Id
         "AppType": 0, //应用类型：0-普通插件; 1-基础插件; 2-主程序；11-表单；21-Revit插件
-        "Developer": "", //应用的开发商
-        "Price": 0.0, //应用价格
         "Platform": 2, //产品所属平台：2-Web;4-PC;8-iOS;16-Android
-        "FileId": "ObjectId", //产品安装包文件的Id
       	"FileSize": 0, //产品安装包大小
         "DownloadCount": 0, //该版本产品的下载次数
-        "Star": 5.0, //该版本产品的星级
         "Version": 0, //产品版本号
         "DisplayName": "string", //产品显示名称
         "DisplayIcon": "url", //产品显示图标 存objectId,返回给用户时给Url
         "Screenshots": ["url", "..."], //产品截图 存objectId,返回给用户时给Url
         "Description": "string", //产品描述
         "UpdateLog": "string", //产品更新日志
-        "State": 0, //产品状态：0-未审核；1-审核未通过；2-审核通过未发布；3-已发布
-        "Distro": 0, // 发行版：0-测试版；1-预览版；2-稳定版
-        "ApprovedDate": "/Date/", //产品审核通过时的日期
         "PublishDate": "/Date/", //产品的发布日期
-        "Comments": [{ //产品评论
-            "_id": "ObjectId", //评论Id
-            "Star": 1, //星级
-            "Content": "string", //评论内容
-            "CreateDate": "/Date/", //创建日期
-            "UserId": "ObjectId", //评论人Id
-        }]
     }
 }
 ```
@@ -878,13 +918,68 @@ https://api.xxx.com/v1/product/info
 
 `Map`表示需要结果中需要返回的属性，表达式为`["PropertyName1","PropertyName2"]`表示只包含`PropertyName1`和`PropertyName2`的属性，或者 `["^PropertyName1","^PropertyName2"]`表示不包含`PropertyName1`和`PropertyName2`的所有属性。
 
-## 用户-添加评论
+## 使用者-获取最新产品的详细信息
 
-`app/user/comment/add`
+`product/latest_info`
 
 > **URL**
 
-https://api.xxx.com/v1/app/user/comment/add
+https://api.xxx.com/v1/product/latest_info
+
+> **API级别**
+
+5
+
+> **HTTP请求方式**
+
+`GET`
+
+> **请求参数：**
+
+| 参数         | 必选     | 类型         | 说明                               |
+| ---------- | ------ | ---------- | -------------------------------- |
+| `AppId`    | `true` | `ObjectId` | 应用Id                             |
+| `Platform` | `true` | `int`      | 平台类型：2-Web;4-PC;8-iOS;16-Android |
+
+> **返回结果**
+
+```json
+{
+    "IsOk": true, //是否成功
+    "Code": 200, //返回码
+    "Message": "string", //返回的信息
+    "Data": [{
+        "_id": "ObjectId", //Id
+        "AppKey": "Guid", //所属应用的Key
+        "AppId": "ObjectId", //所属应用的Id
+        "AppType": 0, //应用类型：0-普通插件; 1-基础插件; 2-主程序；11-表单；21-Revit插件
+        "Platform": 2, //产品所属平台：2-Web;4-PC;8-iOS;16-Android
+      	"FileSize": 0, //产品安装包大小
+        "DownloadCount": 0, //该版本产品的下载次数
+        "Version": 0, //产品版本号
+        "DisplayName": "string", //产品显示名称
+        "DisplayIcon": "url", //产品显示图标 存objectId,返回给用户时给Url
+        "Screenshots": ["url", "..."], //产品截图 存objectId,返回给用户时给Url
+        "Description": "string", //产品描述
+        "UpdateLog": "string", //产品更新日志
+        "PublishDate": "/Date/", //产品的发布日期
+    },{
+        "...": ""
+    }]
+}
+```
+
+> **注意事项**
+
+ `Platform`采用或运算，如果想同时获取PC端和Web端的最新产品，则`Platform`取6（2+4），如果获取所有端的最新产品，则`Platform`取32（2+4+8+16）
+
+## 使用者-获取评论列表（筛选、分页、排序、映射）
+
+`app/store/comment/list`
+
+> **URL**
+
+https://api.xxx.com/v1/app/store/comment/list
 
 > **API级别**
 
@@ -896,21 +991,30 @@ https://api.xxx.com/v1/app/user/comment/add
 
 > **请求参数：**
 
-| 参数           | 必选     |    类型    | 说明                   |
-| ------------ | ------ | :------: | -------------------- |
-| `UserToken`  | `true` | `string` | 用户令牌（包含用户Id及访问权限等信息） |
-| ` appInfoId` | `true` | objectId | 产品id                 |
-| `data`       | `true` |   json   | 评论信息                 |
+| 参数           | 必选      | 类型     | 说明               |
+| ------------ | ------- | ------ | ---------------- |
+| `AppId`      | `true`  | `Id`   | 评论针对的应用的Id       |
+| `ListParams` | `false` | `json` | 集合的筛选、分页、排序、映射参数 |
 
-> data数据格式：
->
->     {
->      	"_id": "ObjectId", //评论Id
->      	"Star": 1, //星级
->      	"Content": "string", //评论内容
->      	"CreateDate": "/Date/", //创建日期
->      	"UserId": "ObjectId", //评论人Id
->      }
+`ListParams`的格式为：
+
+```json
+{
+    "Search": "[Expression]", //筛选表达式，默认为空，表示不筛选
+    "Page": { //分页，默认为空，表示不分页
+        "Index": 0, //分页索引，*必填
+        "Count": 1, //分页数量，*必填
+    },
+    "Sort": [{ //排序，可选，默认为空数组，表示不排序
+        "Property": "PropertyName", //第一个排序属性名，*必填
+        "Ascending": true //是否升序，如果为false，则为降序排列，默认为true
+    }, {
+        "...": ""
+    }],
+    "Map": ["PropertyName1", "..."] //返回的属性映射数组，默认为空数组，表示返回所有属性
+}
+```
+
 > **返回结果**
 
 ```json
@@ -918,11 +1022,64 @@ https://api.xxx.com/v1/app/user/comment/add
     "IsOk": true, //是否成功
     "Code": 200, //返回码
     "Message": "string", //返回的信息
-    "Data": { //返回的数据
+    "Data": [{
         "_id": "ObjectId", //评论Id
+        "AppId": "ObjectId", //针对的应用Id
+        "ProductId": "ObjectId", //针对的产品Id
+        "Platform": 0, //评论针对的产品的平台
+        "Version": 0, //评论针对的产品的版本
         "Star": 1, //星级
         "Content": "string", //评论内容
-        "CreateDate": "/Date/" //创建日期
+        "CreateDate": "/Date/", //创建日期
+        "UserName": "string", //评论人
+    }, {
+        "...": ""
+    }]
+}
+```
+
+> **注意事项**
+
+暂无
+
+## 使用者-获取评论统计信息
+
+`app/store/comment/statistics`
+
+> **URL**
+
+https://api.xxx.com/v1/app/store/comment/statistics
+
+> **API级别**
+
+5
+
+> **HTTP请求方式**
+
+`POST`
+
+> **请求参数：**
+
+| 参数       | 必选     | 类型     | 说明          |
+| -------- | ------ | ------ | ----------- |
+| `AppKey` | `true` | `GUID` | 评论针对的应用的key |
+
+> **返回结果**
+
+```json
+{
+    "IsOk": true, //是否成功
+    "Code": 200, //返回码
+    "Message": "string", //返回的信息
+    "Data": {
+        "AppKey": "ObjectId", //应用的Key
+        "TotalCount": 0, //评论的总数
+        "Detail": [{
+            "Star": 1, //星级
+            "Count": 0 //该星级的评论数量
+        }, {
+            "...": ""
+        }]
     }
 }
 ```
@@ -931,7 +1088,97 @@ https://api.xxx.com/v1/app/user/comment/add
 
 暂无
 
-## 用户-获取购买的应用订单集合（筛选、分页、排序、映射）
+## 使用者-添加评论
+
+`app/store/comment/add`
+
+> **URL**
+
+https://api.xxx.com/v1/app/store/comment/add
+
+> **API级别**
+
+5
+
+> **HTTP请求方式**
+
+`POST`
+
+> **请求参数：**
+
+| 参数          | 必选     | 类型       | 说明                                       |
+| ----------- | ------ | -------- | ---------------------------------------- |
+| `UserToken` | `true` | `string` | 用户令牌（包含用户Id及访问权限等信息）                     |
+| `AppKey`    | `true` | `GUID`   | 评论针对的应用的key                              |
+| `Platform`  | `true` | `int`    | 评论针对的产品的平台:`2-Web;4-PC;8-iOS;16-Android` |
+| `Version`   | `true` | `long`   | 评论针对的产品的版本                               |
+| `Star`      | `true` | `int`    | 评论星级[1,5]                                |
+| ` Content`  | `true` | `string` | 评论内容                                     |
+
+> **返回结果**
+
+```json
+{
+    "IsOk": true, //是否成功
+    "Code": 200, //返回码
+    "Message": "string", //返回的信息
+    "Data": {
+        "_id": "ObjectId", //评论Id
+        "AppId": "ObjectId", //针对的应用Id
+        "ProductId": "ObjectId", //针对的产品Id
+        "Platform": 0, //评论针对的产品的平台
+        "Version": 0, //评论针对的产品的版本
+        "Star": 1, //星级
+        "Content": "string", //评论内容
+        "CreateDate": "/Date/", //创建日期
+        "UserName": "string", //评论人名字
+    }
+}
+```
+
+> **注意事项**
+
+暂无
+
+## 使用者-删除评论
+
+`app/store/comment/delete`
+
+> **URL**
+
+https://api.xxx.com/v1/app/store/comment/delete
+
+> **API级别**
+
+5
+
+> **HTTP请求方式**
+
+`POST`
+
+> **请求参数：**
+
+| 参数          | 必选     | 类型       | 说明                   |
+| ----------- | ------ | -------- | -------------------- |
+| `UserToken` | `true` | `string` | 用户令牌（包含用户Id及访问权限等信息） |
+| `Id`        | `true` | `GUID`   | 评论`Id`               |
+
+> **返回结果**
+
+```json
+{
+    "IsOk": true, //是否成功
+    "Code": 200, //返回码
+    "Message": "string", //返回的信息
+    "Data": "Id", //返回被删除的评论的Id
+}
+```
+
+> **注意事项**
+
+暂无
+
+## 使用者-获取购买的应用订单集合（筛选、分页、排序、映射）
 
 `app/order/list`
 
@@ -1008,7 +1255,7 @@ https://api.xxx.com/v1/app/order/list
 
 `SupportedPlatform` 值为支持平台的和，如6：web,PC；
 
-## 用户-创建订单
+## 使用者-创建订单
 
 `app/order/create`
 
@@ -1063,7 +1310,7 @@ https://api.xxx.com/v1/app/order/create
 
 暂无
 
-## 用户-删除订单（批量）
+## 使用者-删除订单（批量）
 
 `app/order/delete`
 
@@ -1107,7 +1354,7 @@ https://api.xxx.com/v1/app/order/delete
 
 暂无
 
-## 用户-订单结算
+## 使用者-订单结算
 
 `app/order/account`
 
