@@ -11,8 +11,111 @@
     <script src="js/jquery.js"></script>
     <script src="js/Mango.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/iscroll.js"></script>
+    <script src="js/underscore.js"></script>
     <link rel="stylesheet" href="ActorMgnt.css">
     <title>人员组织</title>
+</head>
+
+<body>
+    <div id="app" name="app">
+        <ul id="myTab" class="row nav nav-tabs">
+            <li class="col-lg-4 col-xs-4 actor_header active"><a href="#user" data-toggle="tab">人员</a></li>
+            <li class="col-lg-4 col-xs-4 actor_header"><a href="#org" data-toggle="tab">组织</a></li>
+            <li class="col-lg-4 col-xs-4 actor_header"><a href="#role" data-toggle="tab">角色</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="user">
+                <!--人员-->
+                <div class="actor_search">
+                    <div class="input-group">
+                        <input type="text" placeholder="请输人员名" class="form-control">
+                        <span class="input-group-btn">
+                                        <button class="btn btn-default" v type="button">
+                                            搜索
+                                        </button>
+                                    </span>
+                    </div>
+                </div>
+                <div id="wrapper">
+                    <div class="scroller">
+                        <div class="member">
+
+                            <div class="member_item" v-on:click="UserDetail(item)" v-for="item in UserList">
+                                <div class="container">
+                                    <img class="member_item_img pull-left" v-bind:src="item.UserInfo.Avatar">
+                                    <div class="member_item_title pull-left">
+                                        <span v-html="item.UserInfo.RealName"></span>
+                                    </div>
+                                    <div class="pull-right">
+                                        <img class="member_item_tip" src="Assets/item_tip.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="org">
+                <!--组织-->
+                <div class="actor_search">
+                    <div class="input-group">
+                        <input type="text" placeholder="请输入组织名" class="form-control">
+                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            搜索
+                                        </button>
+                                    </span>
+                    </div>
+                </div>
+                <div>
+                    <div class="scroller">
+                        <div class="org">
+                            <ul>
+                                <div v-for="tree in OrgTree">
+                                    <item class="item" :model="tree">
+                                    </item>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="role">
+                <!--角色-->
+                <div class="actor_search">
+                    <div class="input-group">
+                        <input type="text" placeholder="请输入角色名" class="form-control">
+                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            搜索
+                                        </button>
+                                    </span>
+                    </div>
+                </div>
+                <div>
+                    <div class="scroller">
+                        <div class="role">
+                            <div class="role_item" v-on:click="RoleDetail(item)" v-for="item in RoleList">
+                                <div class="container">
+                                    <img class="role_item_img pull-left" v-show="!item.IsDefault" src="Assets/role_default.svg">
+                                    <img class="role_item_img pull-left" v-show="item.IsDefault" src="Assets/role_mgnt.svg">
+                                    <div class="pull-left">
+                                        <div class="role_item_title" v-html="item.Name"></div>
+                                        <div class="role_item_detail" v-html="item.CreatedDate"></div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <img class="role_item_tip" src="Assets/item_tip.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
     <script type="text/x-template" id="item-template">
         <li class="org_item">
             <div class="org_item_container" @dblclick="changeType">
@@ -37,71 +140,13 @@
                     </div>
                 </div>
             </div>
-            <ul v-show="open" v-if="isHas">
-                <item class="item" v-for="model in model.Children" :model="model">
+            <ul style="padding-left:20px;" v-show="open" v-if="isHas">
+                <item v-for="model in model.Children" :key="model.Name" :model="model">
                 </item>
             </ul>
         </li>
     </script>
-</head>
-
-<body>
-    <div id="app" name="app">
-        <ul id="myTab" class="row nav nav-tabs">
-            <li class="col-lg-4 col-xs-4 actor_header active"><a href="#user" data-toggle="tab">人员</a></li>
-            <li class="col-lg-4 col-xs-4 actor_header"><a href="#org" data-toggle="tab">组织</a></li>
-            <li class="col-lg-4 col-xs-4 actor_header"><a href="#role" data-toggle="tab">角色</a></li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade in active" id="user">
-                <!--人员-->
-                <div class="member">
-                    <div class="member_item" v-on:click="UserDetail(item)" v-for="item in UserList">
-                        <div class="container">
-                            <img class="member_item_img pull-left" v-bind:src="item.UserInfo.Avatar">
-                            <div class="member_item_title pull-left">
-                                <span v-html="item.UserInfo.RealName"></span>
-                            </div>
-                            <div class="pull-right">
-                                <img class="member_item_tip" src="Assets/item_tip.svg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="org">
-                <!--组织-->
-                <div class="org">
-                    <ul>
-                        <item class="item" :model="OrgTree">
-                        </item>
-                    </ul>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="role">
-                <!--角色-->
-                <div class="role">
-                    <div class="role_item" v-on:click="RoleDetail(item)" v-for="item in RoleList">
-                        <div class="container">
-                            <img class="role_item_img pull-left" v-show="!item.IsDefault" src="Assets/role_default.svg">
-                            <img class="role_item_img pull-left" v-show="item.IsDefault" src="Assets/role_mgnt.svg">
-                            <div class="pull-left">
-                                <div class="role_item_title" v-html="item.Name"></div>
-                                <div class="role_item_detail" v-html="item.CreatedDate"></div>
-                            </div>
-                            <div class="pull-right">
-                                <img class="role_item_tip" src="Assets/item_tip.svg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <script src="js/vue.js"></script>
     <script src="ActorMgnt.js"></script>
-
 </body>
 
 </html>

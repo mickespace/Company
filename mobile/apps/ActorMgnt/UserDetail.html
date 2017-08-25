@@ -12,7 +12,7 @@
     <script src="js/Mango.js"></script>
     <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="UserDetail.css">
-    <title>人员组织</title>
+    <title>详细信息</title>
 </head>
 
 <body>
@@ -26,16 +26,14 @@
             </div>
             <div class="user_portrait">
                 <div class="container">
-                    <div class="pull-left"> <img class="user_info_avatar" src="Assets/logo.png" heigth="" alt=""></div>
-                    <div class="pull-left">用户头像</div>
-                    <div class="pull-right"><img class="user_portrait_avatar" v-bind:src="UserInfo.UserInfo.Avatar" heigth="" alt=""></div>
+                    <div style="text-align:center;"><img class="user_portrait_avatar" v-bind:src="UserInfo.UserInfo.Avatar"></div>
                 </div>
             </div>
             <!--分割线-->
             <div class="user_info">
                 <div class="container">
                     <div class="pull-left">
-                        <img class="user_info_avatar" src="Assets/logo.png" heigth="" alt="">
+                        <img class="user_info_avatar" src="Assets/user_mobile.svg">
                     </div>
                     <div class="pull-left">电话号码</div>
                     <div class="pull-right" v-html="UserInfo.UserInfo.PhoneNumber"></div>
@@ -45,7 +43,7 @@
             <div class="user_info">
                 <div class="container">
                     <div class="pull-left">
-                        <img class="user_info_avatar" src="Assets/logo.png" heigth="" alt="">
+                        <img class="user_info_avatar" src="Assets/user_email.svg">
                     </div>
                     <div class="pull-left">邮箱</div>
                     <div class="pull-right" v-html="UserInfo.UserInfo.Email"></div>
@@ -55,10 +53,10 @@
             <div class="user_info">
                 <div class="container">
                     <div class="pull-left">
-                        <img class="user_info_avatar" src="Assets/logo.png" heigth="" alt="">
+                        <img class="user_info_avatar" src="Assets/user_date.svg">
                     </div>
-                    <div class="pull-left">创建时间</div>
-                    <div class="pull-right" v-html="UserInfo.UserInfo.CreateDate"></div>
+                    <div class="pull-left">加入时间</div>
+                    <div class="pull-right" v-html="UserInfo.JoinDate"></div>
                 </div>
             </div>
             <!--组织信息-->
@@ -66,11 +64,14 @@
                 <div class="userDetail_tip">
                     <div class="container">
                         <div class="pull-left">所在组织</div>
-                        <div class="pull-right" v-on:click="OrgEdit()"> <img class="user_info_edit" src="Assets/logo.png" heigth="" alt=""></div>
+                        <div class="pull-right" v-show="IsOrgEdit" v-on:click="OrgEdit()"> <img class="user_info_edit" src="Assets/info_edit.svg"></div>
                     </div>
                 </div>
                 <div class="org_info" v-for="item in UserInfo.Orgs">
                     <div class="container">
+                        <div class="pull-left">
+                            <img class="user_info_avatar" src="Assets/org_icon.svg">
+                        </div>
                         <div class="pull-left" v-html="item.Name"></div>
                     </div>
                 </div>
@@ -80,16 +81,21 @@
                 <div class="userDetail_tip  ">
                     <div class="container">
                         <div class="pull-left">所属角色</div>
-                        <div class="pull-right" v-on:click="RoleEdit()"> <img class="user_info_edit" src="Assets/logo.png" heigth="" alt=""></div>
+                        <div class="pull-right" v-show="IsRoleEdit" v-on:click="RoleEdit()"> <img class="user_info_edit" src="Assets/info_edit.svg"></div>
                     </div>
                 </div>
                 <div class="role_info" v-for="item in UserInfo.Roles">
                     <div class="container">
+                        <div class="pull-left">
+                            <img class="user_info_avatar" src="Assets/role_icon.svg">
+                        </div>
                         <div class="pull-left" v-html="item.Name"></div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--提供选择-->
+        <div></div>
     </div>
     <script src="js/vue.js"></script>
     <script src="UserDetail.js"></script>

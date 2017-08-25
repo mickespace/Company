@@ -3,26 +3,58 @@
 var app = new Vue({
     el: "#app",
     data: {
-        IsBusy: false,
-        UserInfo: {
-            "_id": "ObjectId", //成员Id
-            "UserInfo": {
-                "UserId": "ObjectId", //用户Id
-                "Email": "xxx@qq.com", //用户邮箱
-                "PhoneNumber": "(86)136xxxxxxxx", //用户手机号
-                "RealName": "张三", //用户真实姓名
-                "Avatar": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503480227216&di=fea9489f242255b2409477c574b8cdee&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D763968628%2C2435880126%26fm%3D214%26gp%3D0.jpg" //用户头像
+        IsEdit: false,
+        IsUserEdit: false,
+        IsRoleEdit: false,
+        OrgInfo: {
+            "_id": "ObjectId", //组织Id
+            "ProjectId": "ObjectId", //项目Id
+            "ParentId": "ObjectId", //父组织Id
+            "Name": "深圳筑星科技有限公司", //组织名称
+            "Description": "组织描述", //组织描述
+            "Creator": {
+                "_id": "ObjectId", //用户Id
+                "Email": "xxx@qq.com", //邮箱
+                "PhoneNumber": "(86)136xxxxxxxx", //手机号
+                "RealName": "超级管理员" //真实姓名
             },
-            "JoinDate": "/Date/", //加入项目时间
-            "Orgs": [{
-                "_id": "ObjectId", //组织Id
-                "Name": "研发部" //组织名称
-            }],
+            "CreatedDate": " /Date/", //创建时间
             "Roles": [{
                 "_id": "ObjectId", //角色Id
-                "Name": "管理员" //角色名称
+                "Name": "超级管理员" //角色名称
             }]
-        }
+        },
+        MemberList: [{
+            "_id": "ObjectId", //成员Id
+            "Email": "xxx@qq.com", //邮箱
+            "PhoneNumber": "(86)136xxxxxxxx", //手机号
+            "RealName": "超级管理员" //成员真实姓名
+        }, {
+            "_id": "ObjectId", //成员Id
+            "Email": "xxx@qq.com", //邮箱
+            "PhoneNumber": "(86)136xxxxxxxx", //手机号
+            "RealName": "超级管理员" //成员真实姓名
+        }, {
+            "_id": "ObjectId", //成员Id
+            "Email": "xxx@qq.com", //邮箱
+            "PhoneNumber": "(86)136xxxxxxxx", //手机号
+            "RealName": "超级管理员" //成员真实姓名
+        }, {
+            "_id": "ObjectId", //成员Id
+            "Email": "xxx@qq.com", //邮箱
+            "PhoneNumber": "(86)136xxxxxxxx", //手机号
+            "RealName": "超级管理员" //成员真实姓名
+        }, {
+            "_id": "ObjectId", //成员Id
+            "Email": "xxx@qq.com", //邮箱
+            "PhoneNumber": "(86)136xxxxxxxx", //手机号
+            "RealName": "超级管理员" //成员真实姓名
+        }, {
+            "_id": "ObjectId", //成员Id
+            "Email": "xxx@qq.com", //邮箱
+            "PhoneNumber": "(86)136xxxxxxxx", //手机号
+            "RealName": "超级管理员" //成员真实姓名
+        }, ]
     },
     methods: {
         LoadData: function () {

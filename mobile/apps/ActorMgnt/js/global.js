@@ -1,8 +1,22 @@
-//处理请求参数
-function HandleParams(data) {
-    var params = "";
-    for (var key in data) {
-        params = params + key + "=" + data[key] + "&";
-    }
-    return params;
-}
+var ModuleKeys = [{
+    key: 'userRoleEdit',
+    value: 'BE02A510-175A-4C86-BDE9-D3EFBAA3A3DD'
+}, {
+    key: 'userOrgEdit',
+    value: '0F859E1D-AF7D-45B1-8861-78A28C392FB5'
+}, {
+    key: 'orgUserEdit',
+    value: '489AD26F-7A89-4E6A-B16B-96487BCEBC7C'
+}, {
+    key: 'orgRoleEdit',
+    value: 'C7B80742-C63B-4CFA-98A7-1B6C20C00D9A'
+}, {
+    key: 'orgEdit',
+    value: '429CEA3B-0CAA-4CC6-B6A6-9058F2527849'
+}, {
+    key: 'roleEdit',
+    value: '94ABCE20-27A2-40FF-A079-97654AB2D702'
+}, {
+    key: 'roleUserEdit',
+    value: 'C6862278-A8A4-4157-B2F1-4828CCCACB2B'
+}, ]

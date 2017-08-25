@@ -1,8 +1,8 @@
 .userDetail {}
 
 .userDetail_tip {
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
     background-color: #eee;
     position: static;
     float: none;
@@ -22,34 +22,36 @@
 }
 
 .user_info {
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     background-color: White;
     border-bottom: 1px solid #ccc;
 }
 
 .user_info_avatar {
     height: 20px;
-    line-height: 40px;
-    margin-right: 20px;
+    line-height: 50px;
+    margin-right: 10px;
 }
 
 .user_info_edit {
-    height: 30px;
-    padding: 5px;
-    line-height: 40px;
+    height: 28px;
+    line-height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid #ccc;
 }
 
 .org_info {
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     background-color: White;
     border-bottom: 1px solid #ccc;
 }
 
 .role_info {
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     background-color: White;
     border-bottom: 1px solid #ccc;
 }

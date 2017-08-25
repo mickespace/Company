@@ -1,7 +1,6 @@
 body {
+    font-family: "Microsoft YaHei" ! important;
     position: relative;
-    font-size: 14px;
-    line-height: 20px;
     width: 100%;
     margin: 0;
     padding: 0;

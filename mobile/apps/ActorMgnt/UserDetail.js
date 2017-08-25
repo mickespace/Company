@@ -3,7 +3,8 @@
 var app = new Vue({
     el: "#app",
     data: {
-        IsBusy: false,
+        IsOrgEdit: false,
+        IsRoleEdit: false,
         UserInfo: {
             "_id": "ObjectId", //成员Id
             "UserInfo": {
