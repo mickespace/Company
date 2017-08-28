@@ -1,0 +1,35 @@
+/*人员*/
+
+.member {
+    border-top: 1px solid #eee;
+}
+
+.member_item {
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+.member_item_img {
+    margin: 5px 0px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+.member_item_title {
+    margin: 5px 10px;
+    line-height: 40px;
+    opacity: 0.8
+}
+
+.member_item_off {
+    margin-top: 12px;
+    height: 20px;
+    opacity: 0.4;
+}
+
+.member_item_on {
+    margin-top: 12px;
+    height: 20px;
+}

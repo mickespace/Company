@@ -1,4 +1,5 @@
 .actor_header {
+    position: static;
     text-align: center;
     background-color: #eee;
     border-radius: 0px;
@@ -14,6 +15,7 @@
 /*人员*/
 
 .member {
+    position: static;
     border-top: 1px solid #eee;
 }
 
@@ -25,6 +27,7 @@
 .member_item_img {
     margin: 5px 0px;
     height: 40px;
+    width: 40px;
     border-radius: 50%;
     border: 1px solid #ccc;
     background-color: #eee;
@@ -46,6 +49,7 @@
 /*组织*/
 
 .org {
+    position: static;
     border-top: 1px solid #eee;
 }
 
@@ -94,6 +98,7 @@
 /*角色*/
 
 .role {
+    position: static;
     border-top: 1px solid #eee;
 }
 
@@ -127,27 +132,18 @@
     opacity: 0.4;
 }
 
-
-/*滚动*/
-
-.scroller {
+.data_error {
     position: absolute;
-    z-index: 1;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    top: 0px;
+    left: 0px;
     width: 100%;
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    -o-text-size-adjust: none;
-    text-size-adjust: none;
+    height: 100%;
+    z-index: -1;
+    padding-top: 200px;
+    text-align: center;
+}
+
+.data_error h3 {
+    color: #ccc;
+    text-align: center;
 }

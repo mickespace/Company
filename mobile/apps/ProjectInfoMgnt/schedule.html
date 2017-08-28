@@ -17,26 +17,36 @@
 <body>
     <div id="app" name="app" style="background-color:white;">
         <div class="schedule_content">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;" v-for="item in ScheduleImgs">
-                    <div class="schedule_item">
-                        <div class="schedule_item_title">
-                            <p v-html="item.UploadTime"></p>
-                        </div>
-                        <div class="schedule_item_img">
-                            <a href="javascript:void(0);" v-on:click="HandleImage(item.File.FilePath)">
-                                        <img  v-bind:src="item.Thumbnail">
-                                    </a>
-                        </div>
-                        <div class="schedule_item_description">
-                            <p v-html="item.Description"></p>
-                        </div>
+            <div class="container" v-for="groupItem in ScheduleImgs">
+                <div class="schedule_item_title">
+                    <div class="container" style="padding:0px; margin:0px;">
+                        <span class="pull-left" v-html="groupItem[0].UploadTime"></span><span class="pull-right">共{{groupItem.length}}张</span>
                     </div>
+                </div>
+                <div v-for="item in groupItem">
+                    <a href="javascript:void(0);" v-on:click="HandleImage(item)">
+                        <div class="schedule_item">
+                            <div class="schedule_item_img">
+
+                                <img v-bind:src="item.Thumbnail">
+
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="schedule_img_show" v-show="IsScheduleShow" v-on:click="HandleImage('')"><img v-bind:src="ScheduleImgUrl"> </div>
+        <div class="schedule_img_show" v-show="IsScheduleShow" v-on:click="HandleImage('')">
+            <img v-bind:src="CurrentImage.File.FilePath">
+            <div v-html="CurrentImage.Description"></div>
+        </div>
+        <!--没有数据时-->
+        <div v-show="IsScheduleData" class="schedule_data_error">
+            <img src="Assets/data_error.svg" height="100px" width="100px">
+            <h3>没有查询到相应的进度图</h3>
+        </div>
     </div>
+    <script src="js/underscore.js"></script>
     <script src="js/vue.js"></script>
     <script src="schedule.js"></script>
 </body>

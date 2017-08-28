@@ -19,10 +19,24 @@
 
 <body>
     <div id="app" name="app">
-
+        <div class="scroller">
+            <div class="member">
+                <div class="member_item" v-on:click="SelectedItem(item)" v-for="item in UserList">
+                    <div class="container">
+                        <img class="member_item_img pull-left" v-bind:src="item.UserInfo.Avatar">
+                        <div class="member_item_title pull-left">
+                            <span v-html="item.UserInfo.RealName"></span>
+                        </div>
+                        <div class="pull-right">
+                            <img v-show="!item.IsChecked" class="member_item_off" src="Assets/check_off.svg">
+                            <img v-show="item.IsChecked" class="member_item_on" src="Assets/check_on.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/vue.js"></script>
-    </script>
     <script src="SelectedUser.js"></script>
 </body>
 

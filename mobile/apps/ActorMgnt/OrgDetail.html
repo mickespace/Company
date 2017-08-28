@@ -80,6 +80,13 @@
                         <div class="pull-left" v-html="item.RealName"></div>
                     </div>
                 </div>
+                <div class="org_info" v-if="MemberList.length<1">
+                    <div class="container">
+                        <div class="pull-left">
+                            <div class="error_item">没有成员数据</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!--角色信息-->
             <div>
@@ -93,6 +100,13 @@
                             <img class="user_info_avatar" src="Assets/role_icon.svg">
                         </div>
                         <div class="pull-left" v-html="item.Name"></div>
+                    </div>
+                </div>
+                <div class="role_info" v-if="OrgInfo.Roles.length<1">
+                    <div class="container">
+                        <div class="pull-left">
+                            <div class="error_item">没有角色数据</div>
+                        </div>
                     </div>
                 </div>
             </div>

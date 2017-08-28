@@ -11,7 +11,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/Mango.js"></script>
     <script src="js/bootstrap.js"></script>
-    <link rel="stylesheet" href="roleDetail.css">
+    <link rel="stylesheet" href="RoleDetail.css">
     <title>角色信息</title>
 </head>
 
@@ -77,6 +77,13 @@
                             <img class="user_info_avatar" src="Assets/user_icon.svg">
                         </div>
                         <div class="pull-left" v-html="item.RealName"></div>
+                    </div>
+                </div>
+                <div class="org_info" v-if="RoleInfo.Members.length<1">
+                    <div class="container">
+                        <div class="pull-left">
+                            <div class="error_item">没有组织数据</div>
+                        </div>
                     </div>
                 </div>
             </div>

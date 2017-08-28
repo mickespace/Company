@@ -55,3 +55,7 @@
     background-color: White;
     border-bottom: 1px solid #ccc;
 }
+
+.error_item {
+    opacity: 0.6;
+}

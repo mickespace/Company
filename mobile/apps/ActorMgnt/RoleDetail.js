@@ -41,7 +41,7 @@ var app = new Vue({
         LoadData: function () {
 
         },
-        OrgEdit: function () {
+        UserEdit: function () {
             alert("编辑人员");
         },
         RoleEdit: function () {

@@ -519,23 +519,35 @@ var mgNavi = function () {};
 /*
 导航到指定页面
 address: string，内部地址或网址，*必填
-titie: string，标题
+titie: string，标题，可选
+data: any，其它需要传递的数据，可选
 */
-mgNavi.Go = function (address, title) {
+mgNavi.Go = function (address, title, data) {
     mgLog.SafeDo(function () {
         Native("mgNavi.Go", {
             appKey: mgThis.AppInfo.Key,
             address: address,
-            title: title
+            title: title,
+            data: data
         });
     });
 };
 /*
 后退
+data: any，需要传递的数据，可选
 */
-mgNavi.GoBack = function () {
+mgNavi.GoBack = function (data) {
     mgLog.SafeDo(function () {
-        Native("mgNavi.GoBack");
+        Native("mgNavi.GoBack", data);
+    });
+};
+/*
+获取上一个页面传递过来的参数
+callback: function(any), 回调，返回data
+*/
+mgNavi.GetData = function (callback) {
+    mgLog.SafeDo(function () {
+        NativeFunc("mgNavi.GetData", null, callback)
     });
 };
 
@@ -544,9 +556,14 @@ mgNavi.GoBack = function () {
 //***************************************************************************************************
 var mgPage = function () {};
 //页面加载后，宿主会设置该属性
-mgPage.Key = null;
+mgPage.Key = '';
 //页面加载后，宿主会调用该函数
-mgPage.OnLoaded = null;
+mgPage.OnLoaded = function (data) {};
+//页面出现后，宿主会调用该函数
+mgPage.OnAppearing = function (data) {};
+//页面消失后，宿主会调用该函数
+mgPage.OnDisappearing = function (data) {};
+//设置title
 mgPage.SetTitle = function (title) {
     mgLog.SafeDo(function () {
         Native("mgPage.SetTitle", {

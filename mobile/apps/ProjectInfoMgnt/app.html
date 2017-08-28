@@ -19,6 +19,15 @@
                     Key: "projectInfo",
                     Page: mgThis.GetResPath("projectInfo.html"),
                 },
+                MenuItems: [{
+                    Name: "效果图",
+                    Icon: mgThis.GetResPath("Assets/effect.svg"),
+                    Command: "EffectCommand"
+                }, {
+                    Name: "进度图",
+                    Icon: mgThis.GetResPath("Assets/schedule.svg"),
+                    Command: "ScheduleCommand"
+                }],
                 Order: 1,
             }, function (plugId) {
                 _plugId = plugId;
@@ -30,11 +39,19 @@
         }
 
         function open() {
-            mgNavi.Go("schedule.html");
+            mgNavi.Go("projectInfo.html");
             // mgService.Invoke('OpenProjectInfoPage', null, function (result) {
             //     if (!result.IsOk)
             //         alert(result.Message);
             // });
+        }
+
+        function EffectCommand() {
+            mgNavi.Go("effect.html");
+        }
+
+        function ScheduleCommand() {
+            mgNavi.Go("schedule.html");
         }
     </script>
 </body>

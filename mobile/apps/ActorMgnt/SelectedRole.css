@@ -1,0 +1,40 @@
+/*角色*/
+
+.role {
+    border-top: 1px solid #eee;
+}
+
+.role_item {
+    height: 50px;
+    float: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.role_item_img {
+    margin: 12px 0px;
+    height: 26px;
+}
+
+.role_item_title {
+    margin: 0px 0px 0px 10px;
+    line-height: 30px;
+    opacity: 0.8
+}
+
+.role_item_detail {
+    margin: 0px 0px 0px 10px;
+    line-height: 20px;
+    font-size: 10px;
+    opacity: 0.6
+}
+
+.role_item_off {
+    margin-top: 12px;
+    height: 20px;
+    opacity: 0.4;
+}
+
+.role_item_on {
+    margin-top: 12px;
+    height: 20px;
+}

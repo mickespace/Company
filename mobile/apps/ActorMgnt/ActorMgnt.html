@@ -40,7 +40,6 @@
                 <div id="wrapper">
                     <div class="scroller">
                         <div class="member">
-
                             <div class="member_item" v-on:click="UserDetail(item)" v-for="item in UserList">
                                 <div class="container">
                                     <img class="member_item_img pull-left" v-bind:src="item.UserInfo.Avatar">
@@ -52,9 +51,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--没有数据时-->
+                            <div v-show="IsUserList" class="data_error">
+                                <img src="Assets/data_error.svg" height="100px" width="100px">
+                                <h3>没有查询到相应的数据</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="tab-pane fade" id="org">
                 <!--组织-->
@@ -77,9 +82,15 @@
                                     </item>
                                 </div>
                             </ul>
+                            <!--没有数据时-->
+                            <div v-show="IsOrgTree" class="data_error">
+                                <img src="Assets/data_error.svg" height="100px" width="100px">
+                                <h3>没有查询到相应的数据</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="tab-pane fade" id="role">
                 <!--角色-->
@@ -109,9 +120,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--没有数据时-->
+                            <div v-show="IsRoleList" class="data_error">
+                                <img src="Assets/data_error.svg" height="100px" width="100px">
+                                <h3>没有查询到相应的数据</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
